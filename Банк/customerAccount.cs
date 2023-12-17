@@ -42,8 +42,7 @@ namespace Банк
                         {
                             while (reader.Read())
                             {
-                                string name = reader.GetString(1) + " " + reader.GetString(0) + " " +
-                                    reader.GetString(2);
+                                string name = reader.GetString(1) + " " + reader.GetString(0) + " " + reader.GetString(2);
                                 string dateBirth = reader.GetDateTime(3).ToString("yyyy-MM-dd");
                                 string address = reader.GetString(5);
                                 string telephone = reader.GetString(6);
@@ -80,6 +79,17 @@ namespace Банк
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            btnDeposit.BackColor = Color.WhiteSmoke;
+            btnDeposit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDeposit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnCredit.BackColor = Color.WhiteSmoke;
+            btnCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnCredit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnPersonalData.BackColor = Color.FromArgb(23, 24, 29);
+            btnPersonalData.ForeColor = Color.WhiteSmoke;
+            btnPersonalData.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
             LoadForm(new DataCustomer());
         }
 
@@ -109,12 +119,34 @@ namespace Банк
 
         private void btnCredit_Click(object sender, EventArgs e)
         {
-            timerCredit.Start();
+            btnDeposit.BackColor = Color.WhiteSmoke;
+            btnDeposit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDeposit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnPersonalData.BackColor = Color.WhiteSmoke;
+            btnPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnPersonalData.FlatAppearance.BorderColor = Color.Silver;
+
+            btnCredit.BackColor = Color.FromArgb(23, 24, 29);
+            btnCredit.ForeColor = Color.WhiteSmoke;
+            btnCredit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+            //timerCredit.Start();
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            timerDeposit.Start();
+            btnPersonalData.BackColor = Color.WhiteSmoke;
+            btnPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnPersonalData.FlatAppearance.BorderColor = Color.Silver;
+
+            btnCredit.BackColor = Color.WhiteSmoke;
+            btnCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnCredit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnDeposit.BackColor = Color.FromArgb(23, 24, 29);
+            btnDeposit.ForeColor = Color.WhiteSmoke;
+            btnDeposit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+            //timerDeposit.Start();
         }
 
         bool creditMenu;

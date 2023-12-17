@@ -24,6 +24,8 @@ namespace Банк
 
         private void DataCustomer_Load(object sender, EventArgs e)
         {
+
+
             if (connect.State == ConnectionState.Closed)
             {
                 try

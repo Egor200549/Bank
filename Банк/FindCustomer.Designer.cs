@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label lblAddCustomer;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnHome = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnSignIn = new System.Windows.Forms.Button();
             this.lblPassport = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.mTxtPassport = new System.Windows.Forms.MaskedTextBox();
@@ -45,6 +48,9 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bankDataSet1 = new Банк.bankDataSet1();
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customersTableAdapter = new Банк.bankDataSet1TableAdapters.customersTableAdapter();
             lblAddCustomer = new System.Windows.Forms.Label();
             this.pnHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -52,6 +58,8 @@
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAddCustomer
@@ -69,7 +77,6 @@
             // 
             this.pnHome.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnHome.Controls.Add(this.dataGridView1);
-            this.pnHome.Controls.Add(this.btnSignIn);
             this.pnHome.Controls.Add(this.lblPassport);
             this.pnHome.Controls.Add(this.panel9);
             this.pnHome.Controls.Add(this.lblDateBirth);
@@ -90,39 +97,56 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.Location = new System.Drawing.Point(34, 239);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1223, 382);
             this.dataGridView1.TabIndex = 55;
-            // 
-            // btnSignIn
-            // 
-            this.btnSignIn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnSignIn.FlatAppearance.BorderSize = 0;
-            this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignIn.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSignIn.ForeColor = System.Drawing.Color.White;
-            this.btnSignIn.Location = new System.Drawing.Point(377, 651);
-            this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Padding = new System.Windows.Forms.Padding(5);
-            this.btnSignIn.Size = new System.Drawing.Size(550, 55);
-            this.btnSignIn.TabIndex = 54;
-            this.btnSignIn.Text = "Найти";
-            this.btnSignIn.UseVisualStyleBackColor = false;
-            this.btnSignIn.Click += new System.EventHandler(this.button_Click);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // lblPassport
             // 
-            this.lblPassport.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPassport.AutoSize = true;
             this.lblPassport.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -134,7 +158,6 @@
             // 
             // panel9
             // 
-            this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel9.BackColor = System.Drawing.Color.Transparent;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.mTxtPassport);
@@ -160,11 +183,11 @@
             this.mTxtPassport.TabIndex = 34;
             this.mTxtPassport.ValidatingType = typeof(System.DateTime);
             this.mTxtPassport.Click += new System.EventHandler(this.maskedText_Click);
+            this.mTxtPassport.TextChanged += new System.EventHandler(this.mTxtPassport_TextChanged);
             this.mTxtPassport.Validating += new System.ComponentModel.CancelEventHandler(this.mTxtPassport_Validating);
             // 
             // lblDateBirth
             // 
-            this.lblDateBirth.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblDateBirth.AutoSize = true;
             this.lblDateBirth.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateBirth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -176,7 +199,6 @@
             // 
             // panel7
             // 
-            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.mTxtDateBirth);
@@ -206,7 +228,6 @@
             // 
             // lblLastName
             // 
-            this.lblLastName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -218,7 +239,6 @@
             // 
             // panel6
             // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.txtLastName);
@@ -241,14 +261,13 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(252, 25);
             this.txtLastName.TabIndex = 1;
-            this.txtLastName.TextChanged += new System.EventHandler(this.textbox_TextChanged);
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             this.txtLastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // lblName
             // 
-            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -260,7 +279,6 @@
             // 
             // panel5
             // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.txtName);
@@ -283,7 +301,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(252, 25);
             this.txtName.TabIndex = 1;
-            this.txtName.TextChanged += new System.EventHandler(this.textbox_TextChanged);
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
@@ -300,6 +318,20 @@
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             // 
+            // bankDataSet1
+            // 
+            this.bankDataSet1.DataSetName = "bankDataSet1";
+            this.bankDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customersBindingSource
+            // 
+            this.customersBindingSource.DataMember = "customers";
+            this.customersBindingSource.DataSource = this.bankDataSet1;
+            // 
+            // customersTableAdapter
+            // 
+            this.customersTableAdapter.ClearBeforeFill = true;
+            // 
             // FindCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -311,6 +343,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindCustomer_FormClosed);
+            this.Load += new System.EventHandler(this.FindCustomer_Load);
             this.pnHome.ResumeLayout(false);
             this.pnHome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -322,13 +355,14 @@
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel pnHome;
-        private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.Label lblPassport;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.MaskedTextBox mTxtPassport;
@@ -342,6 +376,9 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.GroupBox groupBox2;
+        private bankDataSet1 bankDataSet1;
+        private System.Windows.Forms.BindingSource customersBindingSource;
+        private bankDataSet1TableAdapters.customersTableAdapter customersTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

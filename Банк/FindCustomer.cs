@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -43,13 +45,15 @@ namespace Банк
             }
         }
 
-        private void textbox_TextChanged(object sender, EventArgs e)
+        private void txtName_TextChanged(object sender, EventArgs e)
         {
             TextBox text = (TextBox)sender;
 
             if (text.Text.Length == 1)
                 text.Text = text.Text.ToUpper();
             text.Select(text.Text.Length, 0);
+
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Имя like '{0}%'", txtName.Text);
         }
 
         bool backspace;
@@ -95,7 +99,7 @@ namespace Банк
 
             if (mTxtDateBirth.Text.Length != 10 || check == false)
             {
-                lblDateBirth.Text = "Неправильно введённая дата рождения";
+                lblDateBirth.Text = "Неверная дата";
                 lblDateBirth.ForeColor = Color.Red;
                 mTxtDateBirth.ForeColor = Color.Red;
                 mTxtDateBirth.Select(0, mTxtDateBirth.Text.Length);
@@ -156,54 +160,61 @@ namespace Банк
 
         SqlConnection connect = new SqlConnection("Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True");
 
-        private void button_Click(object sender, EventArgs e)
+        private void FindCustomer_Load(object sender, EventArgs e)
         {
-            if (txtName.Text == "" || txtLastName.Text == "" ||
-                mTxtDateBirth.Text == "" || mTxtPassport.Text == "")
+            if (connect.State == ConnectionState.Closed)
             {
-                MessageBox.Show("Пожалуйста, введите все данные", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (connect.State == ConnectionState.Closed)
+                try
                 {
-                    try
+                    connect.Open();
+
+                    string selectData = "select id_customer, last_name_customer as Фамилия, first_name_customer as Имя, date_birth as 'Дата рождения', passport_customer as Паспорт from customers";
+
+                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
-                        connect.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
 
-                        string selectData = "select first_name_customer, last_name_customer, middle_name, date_birth, passport_customer, address_customer, telephone_customer, email_customer, name_socal_status from customers, social_statuses where social_statuses.id_social_status = customers.social_status and passport_customer = @passport";
-
-                        using (SqlCommand cmd = new SqlCommand(selectData, connect))
-                        {
-                            string passport = mTxtPassport.Text.Trim();
-                            cmd.Parameters.AddWithValue("@passport", passport);
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count >= 1)
-                            {
-                                Number.passport_customer = mTxtPassport.Text.Trim();
-                                LoadForm(new CustomerAccount());
-                            }
-                            else
-                            {
-                                MessageBox.Show("Такого клиента не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка: " + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
+                        dataGridView1.DataSource = table;
+                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: " + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
             }
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox text = (TextBox)sender;
+
+            if (text.Text.Length == 1)
+                text.Text = text.Text.ToUpper();
+            text.Select(text.Text.Length, 0);
+
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Фамилия like '{0}%'", txtLastName.Text);
+        }
+
+        private void mTxtPassport_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Паспорт like '{0}%'", mTxtPassport.Text);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Number.passport_customer  = dataGridView1.SelectedRows[0].Cells[4].Value.ToString().Trim();
+            LoadForm(new CustomerAccount());
         }
     }
 }

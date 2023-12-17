@@ -38,16 +38,16 @@
             this.pnMain = new System.Windows.Forms.Panel();
             this.flpnCredit = new System.Windows.Forms.FlowLayoutPanel();
             this.pnHome = new System.Windows.Forms.Panel();
+            this.flpnMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.flpnDeposit = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDeposit = new System.Windows.Forms.Button();
             this.btnOpenDeposit = new System.Windows.Forms.Button();
             this.btnCloseDeposit = new System.Windows.Forms.Button();
-            this.flpnMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.timerCredit = new System.Windows.Forms.Timer(this.components);
             this.flpnCredit.SuspendLayout();
             this.pnHome.SuspendLayout();
-            this.flpnDeposit.SuspendLayout();
             this.flpnMenu.SuspendLayout();
+            this.flpnDeposit.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerDeposit
@@ -112,7 +112,7 @@
             this.btnCredit.Location = new System.Drawing.Point(0, 0);
             this.btnCredit.Margin = new System.Windows.Forms.Padding(0);
             this.btnCredit.Name = "btnCredit";
-            this.btnCredit.Size = new System.Drawing.Size(472, 73);
+            this.btnCredit.Size = new System.Drawing.Size(471, 73);
             this.btnCredit.TabIndex = 2;
             this.btnCredit.Text = " Кредиты";
             this.btnCredit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -130,7 +130,7 @@
             this.btnPersonalData.Location = new System.Drawing.Point(0, 0);
             this.btnPersonalData.Margin = new System.Windows.Forms.Padding(0);
             this.btnPersonalData.Name = "btnPersonalData";
-            this.btnPersonalData.Size = new System.Drawing.Size(472, 73);
+            this.btnPersonalData.Size = new System.Drawing.Size(471, 73);
             this.btnPersonalData.TabIndex = 2;
             this.btnPersonalData.Text = " Персональные данные";
             this.btnPersonalData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -174,6 +174,19 @@
             this.pnHome.Size = new System.Drawing.Size(1300, 750);
             this.pnHome.TabIndex = 7;
             // 
+            // flpnMenu
+            // 
+            this.flpnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flpnMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpnMenu.Controls.Add(this.btnPersonalData);
+            this.flpnMenu.Controls.Add(this.flpnDeposit);
+            this.flpnMenu.Controls.Add(this.flpnCredit);
+            this.flpnMenu.Location = new System.Drawing.Point(34, 85);
+            this.flpnMenu.Name = "flpnMenu";
+            this.flpnMenu.Size = new System.Drawing.Size(472, 625);
+            this.flpnMenu.TabIndex = 3;
+            // 
             // flpnDeposit
             // 
             this.flpnDeposit.Controls.Add(this.btnDeposit);
@@ -198,7 +211,7 @@
             this.btnDeposit.Location = new System.Drawing.Point(0, 0);
             this.btnDeposit.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeposit.Name = "btnDeposit";
-            this.btnDeposit.Size = new System.Drawing.Size(472, 73);
+            this.btnDeposit.Size = new System.Drawing.Size(471, 73);
             this.btnDeposit.TabIndex = 2;
             this.btnDeposit.Text = " Вклады";
             this.btnDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -239,19 +252,6 @@
             this.btnCloseDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCloseDeposit.UseVisualStyleBackColor = false;
             // 
-            // flpnMenu
-            // 
-            this.flpnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.flpnMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpnMenu.Controls.Add(this.btnPersonalData);
-            this.flpnMenu.Controls.Add(this.flpnDeposit);
-            this.flpnMenu.Controls.Add(this.flpnCredit);
-            this.flpnMenu.Location = new System.Drawing.Point(34, 85);
-            this.flpnMenu.Name = "flpnMenu";
-            this.flpnMenu.Size = new System.Drawing.Size(472, 625);
-            this.flpnMenu.TabIndex = 3;
-            // 
             // timerCredit
             // 
             this.timerCredit.Interval = 10;
@@ -271,8 +271,8 @@
             this.flpnCredit.ResumeLayout(false);
             this.pnHome.ResumeLayout(false);
             this.pnHome.PerformLayout();
-            this.flpnDeposit.ResumeLayout(false);
             this.flpnMenu.ResumeLayout(false);
+            this.flpnDeposit.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
