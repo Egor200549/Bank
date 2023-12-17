@@ -73,9 +73,11 @@
             this.pnHome.Name = "pnHome";
             this.pnHome.Size = new System.Drawing.Size(1300, 750);
             this.pnHome.TabIndex = 4;
+            this.pnHome.Paint += new System.Windows.Forms.PaintEventHandler(this.pnHome_Paint);
             // 
             // panel8
             // 
+            this.panel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.pictureBox8);
@@ -121,6 +123,7 @@
             // 
             // lblCurrentTime
             // 
+            this.lblCurrentTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCurrentTime.AutoSize = true;
             this.lblCurrentTime.Font = new System.Drawing.Font("Century", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblCurrentTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -132,6 +135,7 @@
             // 
             // panel7
             // 
+            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.pictureBox7);
@@ -177,6 +181,7 @@
             // 
             // panel6
             // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.pictureBox6);
@@ -223,12 +228,14 @@
             // 
             // panel5
             // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.pictureBox5);
             this.panel5.Controls.Add(this.groupBox2);
             this.panel5.Controls.Add(this.lblAddCustomer);
             this.panel5.Location = new System.Drawing.Point(157, 264);
+            this.panel5.MaximumSize = new System.Drawing.Size(480, 100);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(480, 100);
             this.panel5.TabIndex = 2;

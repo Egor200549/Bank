@@ -65,5 +65,10 @@ namespace Банк
         {
             LoadForm(new FindCustomer());
         }
+
+        private void pnHome_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

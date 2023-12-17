@@ -154,6 +154,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdatePersonalData.resx">
+      <DependentUpon>UpdatePersonalData.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bankDataSet.xsc">
       <DependentUpon>bankDataSet.xsd</DependentUpon>
     </None>

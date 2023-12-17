@@ -161,7 +161,7 @@ namespace Банк
             if (txtName.Text == "" || txtLastName.Text == "" ||
                 mTxtDateBirth.Text == "" || mTxtPassport.Text == "")
             {
-                MessageBox.Show("Пожалйста, введите все данные", "Ошибка",
+                MessageBox.Show("Пожалуйста, введите все данные", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
