@@ -219,8 +219,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
-    <None Include="Resources\Анасенко.jpg" />
-    <None Include="Resources\Агальцов.jpg" />
     <Resource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
