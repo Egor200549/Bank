@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection.Emit;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -158,7 +160,7 @@ namespace Банк
             form.Show();
         }
 
-        SqlConnection connect = new SqlConnection("Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Global.database);
 
         private void FindCustomer_Load(object sender, EventArgs e)
         {

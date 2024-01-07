@@ -20,10 +20,12 @@ namespace Банк
             InitializeComponent();
         }
 
-        SqlConnection connect = new SqlConnection("Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Global.database);
 
         private void CustomerAccount_Load(object sender, EventArgs e)
         {
+            Global.pnDeposit = pnMain;
+
             if (connect.State == ConnectionState.Closed)
             {
                 try
@@ -82,14 +84,23 @@ namespace Банк
             btnDeposit.BackColor = Color.WhiteSmoke;
             btnDeposit.ForeColor = Color.FromArgb(23, 24, 29);
             btnDeposit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayDeposit.BackColor = Color.WhiteSmoke;
+            btnDisplayDeposit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayDeposit.FlatAppearance.BorderColor = Color.Silver;
 
             btnCredit.BackColor = Color.WhiteSmoke;
             btnCredit.ForeColor = Color.FromArgb(23, 24, 29);
             btnCredit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayCredit.BackColor = Color.WhiteSmoke;
+            btnDisplayCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayCredit.FlatAppearance.BorderColor = Color.Silver;
 
             btnPersonalData.BackColor = Color.FromArgb(23, 24, 29);
             btnPersonalData.ForeColor = Color.WhiteSmoke;
             btnPersonalData.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+            btnDisplayPersonalData.BackColor = Color.FromArgb(23, 24, 29);
+            btnDisplayPersonalData.ForeColor = Color.WhiteSmoke;
+            btnDisplayPersonalData.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
             LoadForm(new DataCustomer());
         }
 
@@ -104,6 +115,7 @@ namespace Банк
                 {
                     depositMenu = false;
                     timerDeposit.Stop();
+                    btnDisplayDeposit.Text = "▼";
                 }
             }
             else
@@ -113,6 +125,7 @@ namespace Банк
                 {
                     depositMenu = true;
                     timerDeposit.Stop();
+                    btnDisplayDeposit.Text = "▲";
                 }
             }
         }
@@ -122,15 +135,23 @@ namespace Банк
             btnDeposit.BackColor = Color.WhiteSmoke;
             btnDeposit.ForeColor = Color.FromArgb(23, 24, 29);
             btnDeposit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayDeposit.BackColor = Color.WhiteSmoke;
+            btnDisplayDeposit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayDeposit.FlatAppearance.BorderColor = Color.Silver;
 
             btnPersonalData.BackColor = Color.WhiteSmoke;
             btnPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
             btnPersonalData.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayPersonalData.BackColor = Color.WhiteSmoke;
+            btnDisplayPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayPersonalData.FlatAppearance.BorderColor = Color.WhiteSmoke;
 
             btnCredit.BackColor = Color.FromArgb(23, 24, 29);
             btnCredit.ForeColor = Color.WhiteSmoke;
             btnCredit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
-            //timerCredit.Start();
+            btnDisplayCredit.BackColor = Color.FromArgb(23, 24, 29);
+            btnDisplayCredit.ForeColor = Color.WhiteSmoke;
+            btnDisplayCredit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
@@ -138,15 +159,25 @@ namespace Банк
             btnPersonalData.BackColor = Color.WhiteSmoke;
             btnPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
             btnPersonalData.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayPersonalData.BackColor = Color.WhiteSmoke;
+            btnDisplayPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayPersonalData.FlatAppearance.BorderColor = Color.WhiteSmoke;
 
             btnCredit.BackColor = Color.WhiteSmoke;
             btnCredit.ForeColor = Color.FromArgb(23, 24, 29);
             btnCredit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayCredit.BackColor = Color.WhiteSmoke;
+            btnDisplayCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayCredit.FlatAppearance.BorderColor = Color.Silver;
 
             btnDeposit.BackColor = Color.FromArgb(23, 24, 29);
             btnDeposit.ForeColor = Color.WhiteSmoke;
             btnDeposit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
-            //timerDeposit.Start();
+            btnDisplayDeposit.BackColor = Color.FromArgb(23, 24, 29);
+            btnDisplayDeposit.ForeColor = Color.WhiteSmoke;
+            btnDisplayDeposit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+
+            LoadForm(new DepositCustomer());
         }
 
         bool creditMenu;
@@ -160,6 +191,7 @@ namespace Банк
                 {
                     creditMenu = false;
                     timerCredit.Stop();
+                    btnDisplayCredit.Text = "▼";
                 }
             }
             else
@@ -169,8 +201,55 @@ namespace Банк
                 {
                     creditMenu = true;
                     timerCredit.Stop();
+                    btnDisplayCredit.Text = "▲";
                 }
             }
+        }
+
+        private void btnDisplayDeposit_Click(object sender, EventArgs e)
+        {
+            timerDeposit.Start();
+        }
+
+        private void btnDisplayCredit_Click(object sender, EventArgs e)
+        {
+            timerCredit.Start();
+        }
+
+        bool dataMenu;
+
+        private void timerPersonalData_Tick(object sender, EventArgs e)
+        {
+            if (dataMenu)
+            {
+                flpnPersonalData.Height -= 10;
+                if (flpnPersonalData.Height == flpnPersonalData.MinimumSize.Height)
+                {
+                    dataMenu = false;
+                    timerPersonalData.Stop();
+                    btnDisplayPersonalData.Text = "▼";
+                }
+            }
+            else
+            {
+                flpnPersonalData.Height += 10;
+                if (flpnPersonalData.Height == flpnPersonalData.MaximumSize.Height)
+                {
+                    dataMenu = true;
+                    timerPersonalData.Stop();
+                    btnDisplayPersonalData.Text = "▲";
+                }
+            }
+        }
+
+        private void btnDisplayPersonalData_Click(object sender, EventArgs e)
+        {
+            timerPersonalData.Start();
+        }
+
+        private void btnUpdateData_Click(object sender, EventArgs e)
+        {
+            LoadForm(new UpdatePersonalData());
         }
     }
 }

@@ -86,6 +86,18 @@
     <Compile Include="DataCustomer.Designer.cs">
       <DependentUpon>DataCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Deposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deposit.Designer.cs">
+      <DependentUpon>Deposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepositCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepositCustomer.Designer.cs">
+      <DependentUpon>DepositCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FindCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +142,12 @@
     <EmbeddedResource Include="DataCustomer.resx">
       <DependentUpon>DataCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Deposit.resx">
+      <DependentUpon>Deposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepositCustomer.resx">
+      <DependentUpon>DepositCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindCustomer.resx">
       <DependentUpon>FindCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +171,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UpdatePersonalData.resx">
       <DependentUpon>UpdatePersonalData.cs</DependentUpon>
@@ -200,6 +219,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Анасенко.jpg" />
+    <None Include="Resources\Агальцов.jpg" />
+    <Resource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

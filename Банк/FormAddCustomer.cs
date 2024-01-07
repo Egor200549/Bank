@@ -12,12 +12,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
 using System.Globalization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.IO;
+using static Банк.MainDisplay;
 
 namespace Банк
 {
     public partial class FormAddCustomer : Form
     {
-        SqlConnection connect = new SqlConnection("Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Global.database);
 
         public FormAddCustomer()
         {
@@ -66,7 +68,6 @@ namespace Банк
                     e.Handled = true;
                 }
             }
-
         }
 
         private void textbox_TextChanged(object sender, EventArgs e)
@@ -124,70 +125,82 @@ namespace Банк
             maskedText.Select(4, 0);
         }
 
-        private void cmbSocialStatus_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void btnSignIn_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtName.Text == "" || txtLastName.Text == "" || txtMiddleName.Text == "" ||
                 mTxtDateBirth.Text == "" || mTxtPassport.Text == "" || txtAddress.Text == "" ||
-                mTxtTelephone.Text == "" || txtEmail.Text == "" || cmbSocialStatus.Text == "")
+                mTxtTelephone.Text == "" || txtEmail.Text == "" || cmbStatus.Text == "" ||
+                mTxtPassportDate.Text == "" || txtPassportPlace.Text == "")
             {
                 MessageBox.Show("Пожалуйста, заполните все поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (connect.State == ConnectionState.Closed)
+                if (photoName == "user.png")
                 {
-                    try
+                    MessageBox.Show("Пожалуйста, добавьте фотографию клиента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (connect.State == ConnectionState.Closed)
                     {
-                        connect.Open();
-
-                        string checkCustomerPassport = "select count(*) from customers where passport_customer = @passport_customer";
-
-                        using(SqlCommand checkCust = new SqlCommand(checkCustomerPassport, connect))
+                        try
                         {
-                            checkCust.Parameters.AddWithValue("@passport_customer", mTxtPassport.Text.Trim());
-                            int count = (int)checkCust.ExecuteScalar();
+                            connect.Open();
 
-                            if (count >= 1)
-                            {
-                                MessageBox.Show("Такой клиент уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                string insertData = "insert into customers " +
-                                    "(first_name_customer, last_name_customer, middle_name, date_birth, passport_customer, address_customer, telephone_customer, email_customer, social_status)" +
-                                    "values (@first_name_customer, @last_name_customer, @middle_name, @date_birth, @passport_customer, @address_customer, @telephone_customer, @email_customer, @social_status)";
+                            string checkCustomerPassport = "select count(*) from customers where passport_customer = @passport_customer";
 
-                                using(SqlCommand cmd = new SqlCommand(insertData, connect))
+                            using (SqlCommand checkCust = new SqlCommand(checkCustomerPassport, connect))
+                            {
+                                checkCust.Parameters.AddWithValue("@passport_customer", mTxtPassport.Text.Trim());
+                                int count = (int)checkCust.ExecuteScalar();
+
+                                if (count >= 1)
                                 {
-                                    cmd.Parameters.AddWithValue("@first_name_customer", txtName.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@last_name_customer", txtLastName.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@date_birth", mTxtDateBirth.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@passport_customer", mTxtPassport.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@address_customer", txtAddress.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@telephone_customer", mTxtTelephone.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@email_customer", txtEmail.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@social_status", cmbSocialStatus.SelectedValue);
+                                    MessageBox.Show("Такой клиент уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    Image image = pictBox.Image;
+                                    byte[] mas;
+                                    ImageConverter converter = new ImageConverter();
+                                    mas = (byte[])converter.ConvertTo(image, typeof(byte[]));
 
-                                    cmd.ExecuteNonQuery();
 
-                                    MessageBox.Show("Успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    string insertData = "insert into customers " +
+                                        "(first_name_customer, last_name_customer, middle_name, date_birth, passport_customer, address_customer, telephone_customer, email_customer, social_status, photo, place_passport, date_passport)" +
+                                        "values (@first_name_customer, @last_name_customer, @middle_name, @date_birth, @passport_customer, @address_customer, @telephone_customer, @email_customer, @social_status, @photo, @place_passport, @date_passport)";
+
+                                    using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                                    {
+                                        cmd.Parameters.AddWithValue("@first_name_customer", txtName.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@last_name_customer", txtLastName.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@middle_name", txtMiddleName.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@date_birth", mTxtDateBirth.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@passport_customer", mTxtPassport.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@address_customer", txtAddress.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@telephone_customer", mTxtTelephone.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@email_customer", txtEmail.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@social_status", cmbStatus.SelectedValue);
+                                        cmd.Parameters.AddWithValue("@photo", mas);
+                                        cmd.Parameters.AddWithValue("@place_passport", txtPassportPlace.Text);
+                                        cmd.Parameters.AddWithValue("@date_passport", mTxtPassportDate.Text);
+
+                                        cmd.ExecuteNonQuery();
+
+                                        MessageBox.Show("Успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
                                 }
                             }
                         }
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("Ошибка:" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка:" + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
                     }
                 }
             }
@@ -197,19 +210,85 @@ namespace Банк
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet1.social_statuses". При необходимости она может быть перемещена или удалена.
             this.social_statusesTableAdapter.Fill(this.bankDataSet1.social_statuses);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet1.social_statuses". При необходимости она может быть перемещена или удалена.
-            this.social_statusesTableAdapter.Fill(this.bankDataSet1.social_statuses);
 
+            pictBox.Load(Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().Length - 10) + "\\Resources\\user.png");
+            photoName = pictBox.ImageLocation.ToString();
+            photoName = photoName.Substring(photoName.LastIndexOf("\\"));
+            photoName = photoName.Remove(0, 1);
         }
 
-        private void mTxtDateBirth_Validating(object sender, CancelEventArgs e)
+        private void txtName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtName.Text == "")
+            {
+                lblName.Text = "Заполните поле";
+                lblName.ForeColor = Color.Red;
+                txtName.ForeColor = Color.Red;
+                txtName.Select(0, txtName.Text.Length);
+            }
+            else
+            {
+                lblName.Text = "Имя";
+                lblName.ForeColor = Color.FromArgb(23, 24, 29);
+                txtName.ForeColor = Color.Green;
+            }
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtLastName.Text == "")
+            {
+                lblLastName.Text = "Заполните поле";
+                lblLastName.ForeColor = Color.Red;
+                txtLastName.ForeColor = Color.Red;
+                txtLastName.Select(0, txtLastName.Text.Length);
+            }
+            else
+            {
+                lblLastName.Text = "Фамилия";
+                lblLastName.ForeColor = Color.FromArgb(23, 24, 29);
+                txtLastName.ForeColor = Color.Green;
+            }
+        }
+
+        private void txtMiddleName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtMiddleName.Text == "")
+            {
+                lblMiddleName.Text = "Заполните поле";
+                lblMiddleName.ForeColor = Color.Red;
+                txtMiddleName.ForeColor = Color.Red;
+                txtMiddleName.Select(0, txtMiddleName.Text.Length);
+            }
+            else
+            {
+                lblMiddleName.Text = "Отчество";
+                lblMiddleName.ForeColor = Color.FromArgb(23, 24, 29);
+                txtMiddleName.ForeColor = Color.Green;
+            }
+        }
+
+        string photoName;
+
+        private void btnAddPhoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files(* .jpg; * .jpeg; * .png;)|* .jpg; * .jpeg; * .png;";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                pictBox.Image = new Bitmap(openFileDialog.FileName);
+            }
+            photoName = Path.GetFileName(openFileDialog.FileName);
+        }
+
+        private void mTxtDateBirth_Validating_1(object sender, CancelEventArgs e)
         {
             bool check;
             DateTime scheduleDate;
 
             if (DateTime.TryParse(mTxtDateBirth.Text, out scheduleDate))
             {
-                if (Convert.ToInt32(mTxtDateBirth.Text.Substring(0, 4)) < 1900)
+                if (Convert.ToInt32(mTxtDateBirth.Text.Substring(0, 4)) < 1900 || scheduleDate > DateTime.Today)
                     check = false;
                 else check = true;
             }
@@ -264,55 +343,71 @@ namespace Банк
             }
         }
 
-        private void txtName_Validating(object sender, CancelEventArgs e)
+        private void txtPassportPlace_Validating(object sender, CancelEventArgs e)
         {
-            if (txtName.Text == "")
+            if (txtPassportPlace.Text == "")
             {
-                lblName.Text = "Заполните поле";
-                lblName.ForeColor = Color.Red;
-                txtName.ForeColor = Color.Red;
-                txtName.Select(0, txtName.Text.Length);
+                lblPassportPlace.Text = "Заполните поле";
+                lblPassportPlace.ForeColor = Color.Red;
+                txtPassportPlace.ForeColor = Color.Red;
+                txtPassportPlace.Select(0, txtLastName.Text.Length);
             }
             else
             {
-                lblName.Text = "Имя";
-                lblName.ForeColor = Color.FromArgb(23, 24, 29);
-                txtName.ForeColor = Color.Green;
+                lblPassportPlace.Text = "Место выдачи";
+                lblPassportPlace.ForeColor = Color.FromArgb(23, 24, 29);
+                txtPassportPlace.ForeColor = Color.Green;
             }
         }
 
-        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        private void mTxtPassportDate_Validating(object sender, CancelEventArgs e)
         {
-            if (txtLastName.Text == "")
+            bool check;
+            DateTime scheduleDate;
+
+            if (DateTime.TryParse(mTxtPassportDate.Text, out scheduleDate))
             {
-                lblLastName.Text = "Заполните поле";
-                lblLastName.ForeColor = Color.Red;
-                txtLastName.ForeColor = Color.Red;
-                txtLastName.Select(0, txtLastName.Text.Length);
+                if (Convert.ToInt32(mTxtPassportDate.Text.Substring(0, 4)) < 1900 || scheduleDate > DateTime.Today)
+                    check = false;
+                else check = true;
+            }
+            else check = false;
+
+            if (mTxtPassportDate.Text.Length != 10 || check == false)
+            {
+                lblPassportDate.Text = "Неправильно введённая дата выдачи";
+                lblPassportDate.ForeColor = Color.Red;
+                mTxtPassportDate.ForeColor = Color.Red;
+                mTxtPassportDate.Select(0, mTxtPassportDate.Text.Length);
             }
             else
             {
-                lblLastName.Text = "Фамилия";
-                lblLastName.ForeColor = Color.FromArgb(23, 24, 29);
-                txtLastName.ForeColor = Color.Green;
+                lblPassportDate.Text = "Дата выдачи";
+                lblPassportDate.ForeColor = Color.FromArgb(23, 24, 29);
+                mTxtPassportDate.ForeColor = Color.Green;
             }
         }
 
-        private void txtMiddleName_Validating(object sender, CancelEventArgs e)
+        private void txtAddress_Validating(object sender, CancelEventArgs e)
         {
-            if (txtMiddleName.Text == "")
+            if (txtAddress.Text == "")
             {
-                lblMiddleName.Text = "Заполните поле";
-                lblMiddleName.ForeColor = Color.Red;
-                txtMiddleName.ForeColor = Color.Red;
-                txtMiddleName.Select(0, txtMiddleName.Text.Length);
+                lblAddress.Text = "Заполните поле";
+                lblAddress.ForeColor = Color.Red;
+                txtAddress.ForeColor = Color.Red;
+                txtAddress.Select(0, txtAddress.Text.Length);
             }
             else
             {
-                lblMiddleName.Text = "Фамилия";
-                lblMiddleName.ForeColor = Color.FromArgb(23, 24, 29);
-                txtMiddleName.ForeColor = Color.Green;
+                lblAddress.Text = "Адрес";
+                lblAddress.ForeColor = Color.FromArgb(23, 24, 29);
+                txtAddress.ForeColor = Color.Green;
             }
+        }
+
+        private void cmbStatus_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

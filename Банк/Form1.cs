@@ -3,14 +3,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
-
-
+using static Банк.MainDisplay;
 
 namespace Банк
 {
     public partial class MainForm : Form
     {
-        SqlConnection connect = new SqlConnection("Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Global.database);
 
         public MainForm()
         {
@@ -60,6 +59,7 @@ namespace Банк
 
                             if (table.Rows.Count >= 1)
                             {
+                                Global.account = (Convert.ToInt32(txtLogin.Text));
                                 MainDisplay mainDisplay = new MainDisplay();
                                 mainDisplay.Show();
                                 this.Hide();

@@ -16,6 +16,11 @@ namespace Банк
         public static class Global
         {
             public static Panel pn {  get; set; }
+            public static Panel pnDeposit { get; set; }
+            public static int account { get; set; }
+
+            public static string database = "Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True";
+            public static int deposit { get; set; }
 
         }
 
