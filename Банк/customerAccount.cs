@@ -25,6 +25,7 @@ namespace Банк
         private void CustomerAccount_Load(object sender, EventArgs e)
         {
             Global.pnDeposit = pnMain;
+            Global.btn = btnPersonalData;
 
             if (connect.State == ConnectionState.Closed)
             {

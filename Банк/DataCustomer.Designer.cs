@@ -35,28 +35,28 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
             System.Windows.Forms.Label label4;
-            this.pictBox = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.mTxtPassport = new System.Windows.Forms.MaskedTextBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblDateBirth = new System.Windows.Forms.Label();
             this.lblPassport = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.mTxtDateBirth = new System.Windows.Forms.MaskedTextBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.mTxtTelephone = new System.Windows.Forms.MaskedTextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblTelephone = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.mTxtPassportDate = new System.Windows.Forms.MaskedTextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.txtPassportPlace = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.txtStatus = new System.Windows.Forms.TextBox();
@@ -68,20 +68,20 @@
             label2 = new System.Windows.Forms.Label();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             panel1.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel14.SuspendLayout();
             this.panel7.SuspendLayout();
             panel3.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panel14.SuspendLayout();
             panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel15.SuspendLayout();
             this.SuspendLayout();
@@ -97,17 +97,6 @@
             lblAddress.Size = new System.Drawing.Size(65, 23);
             lblAddress.TabIndex = 26;
             lblAddress.Text = "Адрес";
-            // 
-            // pictBox
-            // 
-            this.pictBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictBox.Location = new System.Drawing.Point(20, 20);
-            this.pictBox.Margin = new System.Windows.Forms.Padding(0, 0, 206, 20);
-            this.pictBox.Name = "pictBox";
-            this.pictBox.Size = new System.Drawing.Size(434, 434);
-            this.pictBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictBox.TabIndex = 39;
-            this.pictBox.TabStop = false;
             // 
             // panel1
             // 
@@ -148,35 +137,6 @@
             this.mTxtPassport.Size = new System.Drawing.Size(397, 25);
             this.mTxtPassport.TabIndex = 34;
             this.mTxtPassport.ValidatingType = typeof(System.DateTime);
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.Transparent;
-            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.txtAddress);
-            this.panel14.Location = new System.Drawing.Point(0, 43);
-            this.panel14.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(431, 55);
-            this.panel14.TabIndex = 25;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAddress.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.txtAddress.Location = new System.Drawing.Point(12, 14);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(0);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.ReadOnly = true;
-            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAddress.Size = new System.Drawing.Size(403, 25);
-            this.txtAddress.TabIndex = 1;
             // 
             // lblDateBirth
             // 
@@ -268,32 +228,34 @@
             this.mTxtTelephone.TabIndex = 35;
             this.mTxtTelephone.ValidatingType = typeof(System.DateTime);
             // 
-            // panel12
+            // panel14
             // 
-            this.panel12.BackColor = System.Drawing.Color.Transparent;
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.txtEmail);
-            this.panel12.Location = new System.Drawing.Point(0, 43);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(431, 55);
-            this.panel12.TabIndex = 29;
+            this.panel14.BackColor = System.Drawing.Color.Transparent;
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel14.Controls.Add(this.txtAddress);
+            this.panel14.Location = new System.Drawing.Point(0, 43);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(431, 55);
+            this.panel14.TabIndex = 25;
             // 
-            // txtEmail
+            // txtAddress
             // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.txtEmail.Location = new System.Drawing.Point(12, 14);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(0);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(403, 25);
-            this.txtEmail.TabIndex = 1;
+            this.txtAddress.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAddress.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.txtAddress.Location = new System.Drawing.Point(12, 14);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(0);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAddress.Size = new System.Drawing.Size(403, 25);
+            this.txtAddress.TabIndex = 1;
             // 
             // lblTelephone
             // 
@@ -306,30 +268,6 @@
             this.lblTelephone.Size = new System.Drawing.Size(93, 23);
             this.lblTelephone.TabIndex = 28;
             this.lblTelephone.Text = "Телефон";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.lblEmail.Location = new System.Drawing.Point(3, 3);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(147, 23);
-            this.lblEmail.TabIndex = 30;
-            this.lblEmail.Text = "Почта (e-mail)";
-            // 
-            // panel4
-            // 
-            this.panel4.AutoSize = true;
-            this.panel4.Controls.Add(this.panel12);
-            this.panel4.Controls.Add(this.lblEmail);
-            this.panel4.Location = new System.Drawing.Point(0, 699);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.panel4.Size = new System.Drawing.Size(434, 118);
-            this.panel4.TabIndex = 41;
             // 
             // panel2
             // 
@@ -424,20 +362,6 @@
             label2.TabIndex = 26;
             label2.Text = "Место выдачи";
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(panel3);
-            this.flowLayoutPanel2.Controls.Add(panel1);
-            this.flowLayoutPanel2.Controls.Add(panel2);
-            this.flowLayoutPanel2.Controls.Add(this.panel4);
-            this.flowLayoutPanel2.Controls.Add(this.panel10);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(20, 474);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(454, 990);
-            this.flowLayoutPanel2.TabIndex = 44;
-            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
@@ -450,6 +374,82 @@
             flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
             flowLayoutPanel1.Size = new System.Drawing.Size(720, 756);
             flowLayoutPanel1.TabIndex = 34;
+            // 
+            // pictBox
+            // 
+            this.pictBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictBox.Location = new System.Drawing.Point(20, 20);
+            this.pictBox.Margin = new System.Windows.Forms.Padding(0, 0, 206, 20);
+            this.pictBox.Name = "pictBox";
+            this.pictBox.Size = new System.Drawing.Size(272, 272);
+            this.pictBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictBox.TabIndex = 39;
+            this.pictBox.TabStop = false;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.Controls.Add(panel3);
+            this.flowLayoutPanel2.Controls.Add(panel1);
+            this.flowLayoutPanel2.Controls.Add(panel2);
+            this.flowLayoutPanel2.Controls.Add(this.panel4);
+            this.flowLayoutPanel2.Controls.Add(this.panel10);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(20, 312);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(454, 990);
+            this.flowLayoutPanel2.TabIndex = 44;
+            // 
+            // panel4
+            // 
+            this.panel4.AutoSize = true;
+            this.panel4.Controls.Add(this.panel12);
+            this.panel4.Controls.Add(this.lblEmail);
+            this.panel4.Location = new System.Drawing.Point(0, 699);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.panel4.Size = new System.Drawing.Size(434, 118);
+            this.panel4.TabIndex = 41;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.Transparent;
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel12.Controls.Add(this.txtEmail);
+            this.panel12.Location = new System.Drawing.Point(0, 43);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(431, 55);
+            this.panel12.TabIndex = 29;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.txtEmail.Location = new System.Drawing.Point(12, 14);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(0);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(403, 25);
+            this.txtEmail.TabIndex = 1;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.lblEmail.Location = new System.Drawing.Point(3, 3);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(147, 23);
+            this.lblEmail.TabIndex = 30;
+            this.lblEmail.Text = "Почта (e-mail)";
             // 
             // panel10
             // 
@@ -521,33 +521,33 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DataCustomer";
             this.Load += new System.EventHandler(this.DataCustomer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictBox)).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBox)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel15.ResumeLayout(false);

@@ -327,6 +327,8 @@ namespace Банк
                                 cmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadForm(new CustomerAccount());
+                                Global.btn.PerformClick();
                             }
                         }
                         catch (Exception ex)
@@ -340,6 +342,18 @@ namespace Банк
                     }
                 }
             }
+        }
+
+        private void LoadForm(object Form)
+        {
+            if (Global.pn.Controls.Count > 0)
+                Global.pn.Controls.RemoveAt(0);
+            Form form = Form as Form;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            Global.pn.Controls.Add(form);
+            Global.pn.Tag = form;
+            form.Show();
         }
 
         private void btnAddPhoto_Click(object sender, EventArgs e)

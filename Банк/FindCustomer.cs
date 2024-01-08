@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -148,18 +149,6 @@ namespace Банк
             }
         }
 
-        private void LoadForm(object Form)
-        {
-            if (Global.pn.Controls.Count > 0)
-                Global.pn.Controls.RemoveAt(0);
-            Form form = Form as Form;
-            form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
-            Global.pn.Controls.Add(form);
-            Global.pn.Tag = form;
-            form.Show();
-        }
-
         SqlConnection connect = new SqlConnection(Global.database);
 
         private void FindCustomer_Load(object sender, EventArgs e)
@@ -215,8 +204,25 @@ namespace Банк
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Number.passport_customer  = dataGridView1.SelectedRows[0].Cells[4].Value.ToString().Trim();
-            LoadForm(new CustomerAccount());
+            Random random = new Random();
+            Global.code = random.Next(1000, 9999).ToString();
+            Number.passport_customer = dataGridView1.SelectedRows[0].Cells[4].Value.ToString().Trim();
+
+            try
+            {
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead(string.Format("https://platform.clickatell.com/messages/http/send?apiKey=rM-C7AU_SRS-VEpht3wYKw==&to=79111355208&content={0}", Global.code));
+                StreamReader reader = new StreamReader(stream);
+                MessageBox.Show("Код подтверждения успешно отправлен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ConfirmationCode confirmationCode = new ConfirmationCode();
+                confirmationCode.Show();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

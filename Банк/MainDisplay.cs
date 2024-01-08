@@ -21,6 +21,8 @@ namespace Банк
 
             public static string database = "Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True";
             public static int deposit { get; set; }
+            public static string code { get; set; }
+            public static Button btn { get; set; }
 
         }
 
