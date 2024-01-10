@@ -31,7 +31,7 @@ namespace Банк
                 {
                     connect.Open();
 
-                    string selectData = "select name_deposit, contract_number_dep, deposit_percentange, period_dep, deposit_date, return_deposit_date, deposit_amount, return_deposit_amount, earnings, name_currency, last_name_emp, first_name_customer from customersDeposits, customers, deposits, bankStaff, currencies where customers.id_customer = customersDeposits.customer_id and deposits.id_deposit = customersDeposits.deposit_id and customersDeposits.emp_id = bankStaff.id_emp and currencies.currency_code = deposits.currency_code and id_customer_deposit = @id_dep;";
+                    string selectData = "select name_deposit, contract_number_dep, bank_account, deposit_date, period_dep, return_deposit_date, deposit_percentange, deposit_amount, return_deposit_amount, min_balance, min_sum, max_sum, name_currency, iif(contribution = 1, 'Разрешено', 'Не разрешено'), iif(write_off = 1, 'Разрешено', 'Не разрешено'), name_interest, early_percentage, dif_percentage, iif(prolongation = 1, 'Да', 'Нет'), place, concat(last_name_emp, ' ', first_name_emp), status_dep from customersDeposits, deposits, currencies, interestPaymentsDep, bankStaff where customersDeposits.id_customer_deposit = deposits.id_deposit and currencies.currency_code = deposits.currency_code and interestPaymentsDep.id_interest_dep = deposits.interest_dep and customersDeposits.emp_id = bankStaff.id_emp and id_customer_deposit = @id_dep;";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
@@ -45,28 +45,31 @@ namespace Банк
                             {
                                 string name = reader.GetString(0);
                                 string contract = reader.GetInt32(1).ToString();
-                                string percentage = reader.GetDouble(2).ToString();
-                                string period = reader.GetInt32(3).ToString();
-                                string date = reader.GetDateTime(4).ToString("yyyy-MM-dd");
+                                string bankAccount = reader.GetString(2);
+                                string date = reader.GetDateTime(3).ToString("yyyy-MM-dd");
+                                string period = reader.GetInt32(4).ToString();
                                 string returnDate = reader.GetDateTime(5).ToString("yyyy-MM-dd");
-                                string sum = reader.GetSqlMoney(6).ToString();
-                                string returnSum = reader.GetSqlMoney(7).ToString();
-                                string income = reader.GetSqlMoney(8).ToString();
-                                string currency = reader.GetString(9);
-                                string nameEmp = reader.GetString(11) + " " + reader.GetString(10);
+                                string percentage = reader.GetDouble(6).ToString();
+                                string sum = reader.GetSqlMoney(7).ToString();
+                                string returnSum = reader.GetSqlMoney(8).ToString();
+                                string min_balance = reader.GetSqlMoney(9).ToString();
+                                string min_sum = reader.GetSqlMoney(10).ToString();
+                                string max_sum = reader.GetSqlMoney(11).ToString();
+                                string currency = reader.GetString(12);
+                                string contribution = reader.GetString(13);
+                                string write_off = reader.GetString(14);
+                                string name_interest = reader.GetString(15);
+                                string early_percentage = reader.GetDouble(16).ToString();
+                                string dif_percentage = reader.GetDouble(17).ToString();
+                                string prolongation = reader.GetString(18);
+                                string nameEmp = reader.GetString(19);
+                                string status_dep = reader.GetString(20);
 
-                                /*label1.Text = name;
-                                label2.Text = contract;
-                                label3.Text = percentage;
-                                label4.Text = period;
-                                label5.Text = date;
-                                label6.Text = returnDate;
-                                label7.Text = sum;
-                                label8.Text = returnSum;
-                                label9.Text = income;
-                                label10.Text = currency;
-                                label11.Text = nameEmp;*/
-
+                                lblName.Text = name;
+                                lblAccount.Text = bankAccount;
+                                lblInterest.Text = name_interest;
+                                lblPercenrage.Text = percentage;
+                                lblCurrency.Text += currency;
                             }
                         }
                     }

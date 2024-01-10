@@ -22,25 +22,14 @@ namespace Банк
             InitializeComponent();
         }
 
-        bool backspace;
-
-        private void textbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Back)
-                backspace = true;
-        }
-
         private void textbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!backspace)
-            {
-                string @char;
+            string @char;
 
-                @char = e.KeyChar.ToString();
-                if (!Regex.Match(@char, @"[а-яА-ЯЁё]").Success)
-                {
-                    e.Handled = true;
-                }
+            @char = e.KeyChar.ToString();
+            if (!Regex.Match(@char, @"[а-яА-ЯЁё]").Success && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
 
@@ -426,6 +415,17 @@ namespace Банк
                 lblAddress.Text = "Адрес";
                 lblAddress.ForeColor = Color.FromArgb(23, 24, 29);
                 txtAddress.ForeColor = Color.Green;
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string @char;
+
+            @char = e.KeyChar.ToString();
+            if (!Regex.Match(@char, @"[a-zA-Z0-9\.@]").Success && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
     }

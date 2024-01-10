@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
-using System.Globalization;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using static Банк.MainDisplay;
 
 namespace Банк
@@ -54,19 +47,15 @@ namespace Банк
             return Regex.IsMatch(email, regexPattern);
         }
 
-        bool backspace;
 
         private void textbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!backspace)
-            {
-                string @char;
+            string @char;
 
-                @char = e.KeyChar.ToString();
-                if (!Regex.Match(@char, @"[а-яА-ЯЁё]").Success)
-                {
-                    e.Handled = true;
-                }
+            @char = e.KeyChar.ToString();
+            if (!Regex.Match(@char, @"[а-яА-ЯЁё]").Success && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
 
@@ -79,37 +68,25 @@ namespace Банк
             text.Select(text.Text.Length, 0);
         }
 
-        private void textbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Back)
-                backspace = true;
-        }
-
         private void txtAddress_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!backspace)
-            {
-                string @char;
+            string @char;
 
-                @char = e.KeyChar.ToString();
-                if (!Regex.Match(@char, @"[а-яА-ЯЁё0-9\.]").Success && !Regex.Match(@char, @"\s").Success)
-                {
-                    e.Handled = true;
-                }
+            @char = e.KeyChar.ToString();
+            if (!Regex.Match(@char, @"[а-яА-ЯЁё0-9\.]").Success && !Regex.Match(@char, @"\s").Success)
+            {
+                e.Handled = true;
             }
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!backspace)
-            {
-                string @char;
+            string @char;
 
-                @char = e.KeyChar.ToString();
-                if (!Regex.Match(@char, @"[a-zA-Z0-9\.@]").Success)
-                {
-                    e.Handled = true;
-                }
+            @char = e.KeyChar.ToString();
+            if (!Regex.Match(@char, @"[a-zA-Z0-9\.@]").Success && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
 

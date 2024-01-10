@@ -203,7 +203,6 @@
             this.txtName.Size = new System.Drawing.Size(403, 25);
             this.txtName.TabIndex = 1;
             this.txtName.TextChanged += new System.EventHandler(this.textbox_TextChanged);
-            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
@@ -245,7 +244,6 @@
             this.txtMiddleName.Size = new System.Drawing.Size(403, 25);
             this.txtMiddleName.TabIndex = 1;
             this.txtMiddleName.TextChanged += new System.EventHandler(this.textbox_TextChanged);
-            this.txtMiddleName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtMiddleName.Validating += new System.ComponentModel.CancelEventHandler(this.txtMiddleName_Validating);
             // 
@@ -286,7 +284,6 @@
             this.txtLastName.Size = new System.Drawing.Size(403, 25);
             this.txtLastName.TabIndex = 1;
             this.txtLastName.TextChanged += new System.EventHandler(this.textbox_TextChanged);
-            this.txtLastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
@@ -346,7 +343,6 @@
             this.txtPassportPlace.Size = new System.Drawing.Size(403, 25);
             this.txtPassportPlace.TabIndex = 1;
             this.txtPassportPlace.TextChanged += new System.EventHandler(this.textbox_TextChanged);
-            this.txtPassportPlace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtPassportPlace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtPassportPlace.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassportPlace_Validating);
             // 
@@ -562,7 +558,6 @@
             this.txtAddress.Size = new System.Drawing.Size(403, 25);
             this.txtAddress.TabIndex = 1;
             this.txtAddress.TextChanged += new System.EventHandler(this.textbox_TextChanged);
-            this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textbox_KeyDown);
             this.txtAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
             // 
@@ -686,7 +681,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(403, 25);
             this.txtEmail.TabIndex = 1;
-            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // lblEmail
