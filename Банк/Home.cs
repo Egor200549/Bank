@@ -18,6 +18,7 @@ namespace Банк
         public Home()
         {
             InitializeComponent();
+            flowLayoutPanel1.Size = new Size(pnHome.Width / 2, flowLayoutPanel1.Height);
         }
 
         private void currentTime_Tick(object sender, EventArgs e)
@@ -104,6 +105,22 @@ namespace Банк
         private void lblFindCustomer_Click(object sender, EventArgs e)
         {
             LoadForm(new FindCustomer());
+        }
+
+        bool check;
+
+        private void pnHome_SizeChanged(object sender, EventArgs e)
+        {
+            if (check)
+            {
+                flowLayoutPanel1.Size = new Size(pnHome.Width - 40, flowLayoutPanel1.Height);
+                check = false;
+            }
+            else
+            {
+                flowLayoutPanel1.Size = new Size(pnHome.Width / 2, flowLayoutPanel1.Height);
+                check = true;
+            }
         }
     }
 }

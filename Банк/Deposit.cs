@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -31,7 +33,7 @@ namespace Банк
                 {
                     connect.Open();
 
-                    string selectData = "select name_deposit, contract_number_dep, bank_account, deposit_date, period_dep, return_deposit_date, deposit_percentange, deposit_amount, return_deposit_amount, min_balance, min_sum, max_sum, name_currency, iif(contribution = 1, 'Разрешено', 'Не разрешено'), iif(write_off = 1, 'Разрешено', 'Не разрешено'), name_interest, early_percentage, dif_percentage, iif(prolongation = 1, 'Да', 'Нет'), place, concat(last_name_emp, ' ', first_name_emp), status_dep from customersDeposits, deposits, currencies, interestPaymentsDep, bankStaff where customersDeposits.id_customer_deposit = deposits.id_deposit and currencies.currency_code = deposits.currency_code and interestPaymentsDep.id_interest_dep = deposits.interest_dep and customersDeposits.emp_id = bankStaff.id_emp and id_customer_deposit = @id_dep;";
+                    string selectData = "select name_deposit, deposit_percentange, deposit_amount, min_balance, min_sum, name_currency, iif(contribution = 1, 'Разрешено', 'Не разрешено'), iif(write_off = 1, 'Разрешено', 'Не разрешено'), current_percentage from customersDeposits, deposits, currencies where customersDeposits.deposit_id = deposits.id_deposit and currencies.currency_code = deposits.currency_code and id_customer_deposit = @id_dep;";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
@@ -44,32 +46,75 @@ namespace Банк
                             while (reader.Read())
                             {
                                 string name = reader.GetString(0);
-                                string contract = reader.GetInt32(1).ToString();
-                                string bankAccount = reader.GetString(2);
-                                string date = reader.GetDateTime(3).ToString("yyyy-MM-dd");
-                                string period = reader.GetInt32(4).ToString();
-                                string returnDate = reader.GetDateTime(5).ToString("yyyy-MM-dd");
-                                string percentage = reader.GetDouble(6).ToString();
-                                string sum = reader.GetSqlMoney(7).ToString();
-                                string returnSum = reader.GetSqlMoney(8).ToString();
-                                string min_balance = reader.GetSqlMoney(9).ToString();
-                                string min_sum = reader.GetSqlMoney(10).ToString();
-                                string max_sum = reader.GetSqlMoney(11).ToString();
-                                string currency = reader.GetString(12);
-                                string contribution = reader.GetString(13);
-                                string write_off = reader.GetString(14);
-                                string name_interest = reader.GetString(15);
-                                string early_percentage = reader.GetDouble(16).ToString();
-                                string dif_percentage = reader.GetDouble(17).ToString();
-                                string prolongation = reader.GetString(18);
-                                string nameEmp = reader.GetString(19);
-                                string status_dep = reader.GetString(20);
+                                string percentage = reader.GetDouble(1).ToString() + "%";
+                                string sum = reader.GetSqlMoney(2).ToDouble().ToString("N");
+                                string min_balance = reader.GetSqlMoney(3).ToDouble().ToString("N");
+                                string min_sum = reader.GetSqlMoney(4).ToDouble().ToString("N");
+                                string currency = reader.GetString(5);
+                                string contribution = reader.GetString(6);
+                                string write_off = reader.GetString(7);
+                                string current_percentage = reader.GetDouble(8).ToString() + "%";
 
                                 lblName.Text = name;
-                                lblAccount.Text = bankAccount;
-                                lblInterest.Text = name_interest;
-                                lblPercenrage.Text = percentage;
-                                lblCurrency.Text += currency;
+                                lblPercenrage.Text = current_percentage;
+                                lblCurrency.Text = currency;
+                                lblSum.Text = sum;
+
+                                string signCurrency = "";
+
+                                if (currency == "CNY")
+                                {
+                                    lblSum.Text += " ¥";
+                                    signCurrency = "¥";
+                                }
+                                else if (currency == "RUB")
+                                {
+                                    lblSum.Text += " ₽";
+                                    signCurrency = "₽";
+                                }
+                                else if (currency == "AED")
+                                {
+                                    lblSum.Text += " dh";
+                                    signCurrency = "dh";
+                                }
+                                else if (currency == "USD")
+                                {
+                                    lblSum.Text += " $";
+                                    signCurrency = "$";
+                                }
+                                else if (currency == "EUR")
+                                {
+                                    lblSum.Text += " €";
+                                    signCurrency = "€";
+                                }
+
+                                if (write_off == "Разрешено")
+                                {
+                                    double sumD;
+                                    double.TryParse(sum, out sumD);
+                                    double min_sumD;
+                                    double.TryParse(min_sum, out min_sumD);
+
+                                    if (sumD > min_sumD)
+                                        lblTransaction.Text += (sumD - min_sumD).ToString("N") + " " + signCurrency + " без изменения ставки";
+                                    else
+                                        lblTransaction.Text += "0 " + signCurrency + " без изменения ставки";
+
+                                    double remains;
+                                    double.TryParse(min_balance, out remains);
+                                    lblRemains.Text += remains + " " + signCurrency + " (ставка " + current_percentage + ")";
+                                }
+                                else
+                                {
+                                    flowLayoutPanel5.Visible = false;
+                                    pnAnotherTransfer.Visible = false;
+                                    pnTransfer.Visible = false;
+                                }
+
+                                if (contribution != "Разрешено")
+                                {
+                                    pnAdd.Visible = false;
+                                }
                             }
                         }
                     }
@@ -83,6 +128,58 @@ namespace Банк
                     connect.Close();
                 }
             }
+        }
+
+        private void label_MouseEnter(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            label.ForeColor = Color.DimGray;
+            Cursor = Cursors.Hand;
+        }
+
+        private void label_MouseLeave(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            label.ForeColor = Color.Black;
+            Cursor = Cursors.Default;
+        }
+
+        private void LoadForm(object Form)
+        {
+            if (pnAboutDeposit.Controls.Count > 0)
+                pnAboutDeposit.Controls.RemoveAt(0);
+            Form form = Form as Form;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            pnAboutDeposit.Controls.Add(form);
+            pnAboutDeposit.Tag = form;
+            form.Show();
+        }
+
+        private void реквизитыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadForm(new AboutDeposit());
+            AboutDeposit form = new AboutDeposit();
+            pnAboutDeposit.Size = new Size(pnAboutDeposit.Width, form.Height);
+        }
+
+        private void ToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            item.BackColor = Color.Silver;
+        }
+
+        private void ToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            item.BackColor = Color.WhiteSmoke;
+        }
+
+        private void расчётСтавкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadForm(new rateCalculation());
+            rateCalculation form = new rateCalculation();
+            pnAboutDeposit.Size = new Size(pnAboutDeposit.Width, form.Height);
         }
     }
 }

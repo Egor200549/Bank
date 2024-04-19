@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            this.lblName = new System.Windows.Forms.Label();
-            this.pnHome = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -49,13 +47,13 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.pnHome = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCurrentTime = new System.Windows.Forms.Label();
             this.currentTime = new System.Windows.Forms.Timer(this.components);
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnHome.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel6.SuspendLayout();
@@ -64,47 +62,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.pnHome.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Century", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.lblName.Location = new System.Drawing.Point(28, 23);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(276, 47);
-            this.lblName.TabIndex = 9;
-            this.lblName.Text = "Иванов Иван";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnHome
-            // 
-            this.pnHome.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnHome.Controls.Add(flowLayoutPanel1);
-            this.pnHome.Controls.Add(this.lblDate);
-            this.pnHome.Controls.Add(this.groupBox1);
-            this.pnHome.Controls.Add(this.lblName);
-            this.pnHome.Controls.Add(this.lblCurrentTime);
-            this.pnHome.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnHome.Location = new System.Drawing.Point(0, 0);
-            this.pnHome.Name = "pnHome";
-            this.pnHome.Size = new System.Drawing.Size(1300, 750);
-            this.pnHome.TabIndex = 4;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            flowLayoutPanel1.Controls.Add(this.panel5);
-            flowLayoutPanel1.Controls.Add(this.panel6);
-            flowLayoutPanel1.Controls.Add(this.panel7);
-            flowLayoutPanel1.Controls.Add(this.panel8);
-            flowLayoutPanel1.Location = new System.Drawing.Point(33, 108);
-            flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(1224, 231);
-            flowLayoutPanel1.TabIndex = 12;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.panel6);
+            this.flowLayoutPanel1.Controls.Add(this.panel7);
+            this.flowLayoutPanel1.Controls.Add(this.panel8);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(33, 108);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(974, 481);
+            this.flowLayoutPanel1.TabIndex = 12;
             // 
             // panel5
             // 
@@ -172,7 +147,7 @@
             // 
             this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Image = global::Банк.Properties.Resources.angle_small_right__1_;
             this.pictureBox6.Location = new System.Drawing.Point(347, 13);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(70, 70);
@@ -211,7 +186,7 @@
             this.panel7.Controls.Add(this.groupBox4);
             this.panel7.Controls.Add(this.lblShowStatistic);
             this.panel7.Location = new System.Drawing.Point(3, 128);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 3, 39, 3);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 3, 39, 22);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(440, 100);
             this.panel7.TabIndex = 5;
@@ -220,7 +195,7 @@
             // 
             this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Image = global::Банк.Properties.Resources.angle_small_right__1_;
             this.pictureBox7.Location = new System.Drawing.Point(347, 14);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(70, 70);
@@ -266,7 +241,7 @@
             // 
             this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Image = global::Банк.Properties.Resources.angle_small_right__1_;
             this.pictureBox8.Location = new System.Drawing.Point(347, 14);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(70, 70);
@@ -295,6 +270,33 @@
             this.label4.Text = "Что-то";
             this.label4.MouseEnter += new System.EventHandler(this.label_MouseEnter);
             this.label4.MouseLeave += new System.EventHandler(this.label_MouseLeave);
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Century", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.lblName.Location = new System.Drawing.Point(28, 23);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(276, 47);
+            this.lblName.TabIndex = 9;
+            this.lblName.Text = "Иванов Иван";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pnHome
+            // 
+            this.pnHome.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnHome.Controls.Add(this.flowLayoutPanel1);
+            this.pnHome.Controls.Add(this.lblDate);
+            this.pnHome.Controls.Add(this.groupBox1);
+            this.pnHome.Controls.Add(this.lblName);
+            this.pnHome.Controls.Add(this.lblCurrentTime);
+            this.pnHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnHome.Location = new System.Drawing.Point(0, 0);
+            this.pnHome.Name = "pnHome";
+            this.pnHome.Size = new System.Drawing.Size(1300, 750);
+            this.pnHome.TabIndex = 4;
+            this.pnHome.SizeChanged += new System.EventHandler(this.pnHome_SizeChanged);
             // 
             // lblDate
             // 
@@ -346,9 +348,7 @@
             this.Name = "Home";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
-            this.pnHome.ResumeLayout(false);
-            this.pnHome.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -361,6 +361,8 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.pnHome.ResumeLayout(false);
+            this.pnHome.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +391,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

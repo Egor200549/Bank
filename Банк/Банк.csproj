@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDeposit.Designer.cs">
+      <DependentUpon>AboutDeposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="bankDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,12 +142,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rateCalculation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rateCalculation.Designer.cs">
+      <DependentUpon>rateCalculation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePersonalData.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpdatePersonalData.Designer.cs">
       <DependentUpon>UpdatePersonalData.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AboutDeposit.resx">
+      <DependentUpon>AboutDeposit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfirmationCode.resx">
       <DependentUpon>ConfirmationCode.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +197,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="rateCalculation.resx">
+      <DependentUpon>rateCalculation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdatePersonalData.resx">
       <DependentUpon>UpdatePersonalData.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +246,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\angle-small-right %281%29.png" />
+    <None Include="Resources\angle-small-right.png" />
     <Resource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>

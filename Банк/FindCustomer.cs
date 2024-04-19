@@ -204,17 +204,16 @@ namespace Банк
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*Random random = new Random();
-            Global.code = random.Next(1000, 9999).ToString();*/
-            Global.code = "1";
+            Random random = new Random();
+            Global.code = random.Next(1000, 9999).ToString();
+            //Global.code = "1";
             Number.passport_customer = dataGridView1.SelectedRows[0].Cells[4].Value.ToString().Trim();
-
             try
             {
-                /*WebClient client = new WebClient();
+                WebClient client = new WebClient();
                 Stream stream = client.OpenRead(string.Format("https://platform.clickatell.com/messages/http/send?apiKey=rM-C7AU_SRS-VEpht3wYKw==&to=79111355208&content={0}", Global.code));
                 StreamReader reader = new StreamReader(stream);
-                MessageBox.Show("Код подтверждения успешно отправлен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
+                MessageBox.Show("Код подтверждения успешно отправлен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ConfirmationCode confirmationCode = new ConfirmationCode();
                 confirmationCode.Show();
