@@ -181,5 +181,12 @@ namespace Банк
             rateCalculation form = new rateCalculation();
             pnAboutDeposit.Size = new Size(pnAboutDeposit.Width, form.Height);
         }
+
+        private void информацияОСчеётеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadForm(new info_bank_account());
+            info_bank_account form = new info_bank_account();
+            pnAboutDeposit.Size = new Size(pnAboutDeposit.Width, form.Height);
+        }
     }
 }

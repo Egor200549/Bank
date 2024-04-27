@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.GroupBox groupBox1;
             System.Windows.Forms.Label label3;
-            System.Windows.Forms.GroupBox groupBox2;
+            System.Windows.Forms.GroupBox groupBox3;
+            System.Windows.Forms.GroupBox groupBox4;
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblDifPercentage = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,26 +41,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblMinSum = new System.Windows.Forms.Label();
-            groupBox1 = new System.Windows.Forms.GroupBox();
             label3 = new System.Windows.Forms.Label();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = System.Drawing.Color.DarkGray;
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox1.Location = new System.Drawing.Point(0, 90);
-            groupBox1.Margin = new System.Windows.Forms.Padding(0);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(745, 1);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
             // 
             // label3
             // 
@@ -73,24 +62,14 @@
             label3.TabIndex = 3;
             label3.Text = "Минимальный остаток в этом месяце";
             // 
-            // groupBox2
-            // 
-            groupBox2.BackColor = System.Drawing.Color.DarkGray;
-            groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox2.Location = new System.Drawing.Point(0, 271);
-            groupBox2.Margin = new System.Windows.Forms.Padding(0);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(745, 1);
-            groupBox2.TabIndex = 9;
-            groupBox2.TabStop = false;
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel4.Controls.Add(this.lblDifPercentage);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 181);
+            this.panel4.Location = new System.Drawing.Point(0, 182);
             this.panel4.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(745, 90);
@@ -120,10 +99,11 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel3.Controls.Add(this.flowLayoutPanel2);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 91);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
@@ -166,10 +146,11 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(label3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
@@ -201,15 +182,41 @@
             this.lblMinSum.TabIndex = 0;
             this.lblMinSum.Text = "00,00 р";
             // 
+            // groupBox3
+            // 
+            groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            groupBox3.BackColor = System.Drawing.Color.DarkGray;
+            groupBox3.Location = new System.Drawing.Point(0, 90);
+            groupBox3.Margin = new System.Windows.Forms.Padding(0);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(0);
+            groupBox3.Size = new System.Drawing.Size(745, 1);
+            groupBox3.TabIndex = 11;
+            groupBox3.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            groupBox4.BackColor = System.Drawing.Color.DarkGray;
+            groupBox4.Location = new System.Drawing.Point(0, 181);
+            groupBox4.Margin = new System.Windows.Forms.Padding(0);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(0);
+            groupBox4.Size = new System.Drawing.Size(745, 1);
+            groupBox4.TabIndex = 4;
+            groupBox4.TabStop = false;
+            // 
             // rateCalculation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 270);
-            this.Controls.Add(groupBox2);
+            this.Controls.Add(groupBox4);
+            this.Controls.Add(groupBox3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(groupBox1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "rateCalculation";

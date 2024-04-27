@@ -134,6 +134,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="info_bank_account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="info_bank_account.Designer.cs">
+      <DependentUpon>info_bank_account.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="info_bank_account.resx">
+      <DependentUpon>info_bank_account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainDisplay.resx">
       <DependentUpon>MainDisplay.cs</DependentUpon>

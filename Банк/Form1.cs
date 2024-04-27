@@ -18,7 +18,8 @@ namespace Банк
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            txtLogin.Text = "1098";
+            txtPassword.Text = "3618";
         }
 
         private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)

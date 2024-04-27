@@ -330,6 +330,7 @@
             this.информацияОСчеётеToolStripMenuItem.Name = "информацияОСчеётеToolStripMenuItem";
             this.информацияОСчеётеToolStripMenuItem.Size = new System.Drawing.Size(293, 28);
             this.информацияОСчеётеToolStripMenuItem.Text = "Информация о счёте";
+            this.информацияОСчеётеToolStripMenuItem.Click += new System.EventHandler(this.информацияОСчеётеToolStripMenuItem_Click);
             // 
             // историяToolStripMenuItem
             // 
