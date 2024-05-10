@@ -69,6 +69,12 @@
     <Compile Include="AboutDeposit.Designer.cs">
       <DependentUpon>AboutDeposit.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccountsCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountsCustomer.Designer.cs">
+      <DependentUpon>AccountsCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="bankDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,6 +160,12 @@
     <Compile Include="rateCalculation.Designer.cs">
       <DependentUpon>rateCalculation.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransferToAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransferToAccount.Designer.cs">
+      <DependentUpon>TransferToAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePersonalData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,9 @@
     </Compile>
     <EmbeddedResource Include="AboutDeposit.resx">
       <DependentUpon>AboutDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountsCustomer.resx">
+      <DependentUpon>AccountsCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmationCode.resx">
       <DependentUpon>ConfirmationCode.cs</DependentUpon>
@@ -208,6 +223,9 @@
     </Compile>
     <EmbeddedResource Include="rateCalculation.resx">
       <DependentUpon>rateCalculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferToAccount.resx">
+      <DependentUpon>TransferToAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePersonalData.resx">
       <DependentUpon>UpdatePersonalData.cs</DependentUpon>

@@ -45,8 +45,28 @@ namespace Банк
                                 double min_balance = reader.GetSqlMoney(0).ToDouble();
                                 double percentage = reader.GetDouble(1);
                                 double dif_percentage = reader.GetDouble(2);
-                                double max = reader.GetSqlMoney(3).ToDouble();
+                                double max;
+
+                                try
+                                {
+                                    max = reader.GetSqlMoney(3).ToDouble();
+                                }
+                                catch
+                                {
+                                    max = 0;
+                                }
+
                                 double min_sum = reader.GetSqlMoney(4).ToDouble();
+
+                                try
+                                {
+                                    min_sum = reader.GetSqlMoney(4).ToDouble();
+                                }
+                                catch
+                                {
+                                    min_sum = 0;
+                                }
+
                                 string currency = reader.GetString(5);
 
                                 label1.Text = "От " + min_sum.ToString() + " до " + max.ToString();
@@ -85,7 +105,6 @@ namespace Банк
                                     label2.Text += " €";
                                     lblMinSum.Text += " €";
                                 }
-
                             }
                         }
                     }

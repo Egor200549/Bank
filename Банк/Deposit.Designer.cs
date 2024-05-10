@@ -437,6 +437,7 @@
             this.label2.Size = new System.Drawing.Size(234, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Перевести на свой счёт";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             this.label2.MouseEnter += new System.EventHandler(this.label_MouseEnter);
             this.label2.MouseLeave += new System.EventHandler(this.label_MouseLeave);
             // 

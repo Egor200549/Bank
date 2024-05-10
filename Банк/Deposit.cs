@@ -49,7 +49,17 @@ namespace Банк
                                 string percentage = reader.GetDouble(1).ToString() + "%";
                                 string sum = reader.GetSqlMoney(2).ToDouble().ToString("N");
                                 string min_balance = reader.GetSqlMoney(3).ToDouble().ToString("N");
-                                string min_sum = reader.GetSqlMoney(4).ToDouble().ToString("N");
+                                string min_sum;
+
+                                try
+                                {
+                                    min_sum = reader.GetSqlMoney(4).ToDouble().ToString("N");
+                                }
+                                catch
+                                {
+                                    min_sum = "";
+                                }
+                                
                                 string currency = reader.GetString(5);
                                 string contribution = reader.GetString(6);
                                 string write_off = reader.GetString(7);
@@ -88,7 +98,7 @@ namespace Банк
                                     signCurrency = "€";
                                 }
 
-                                if (write_off == "Разрешено")
+                                if (write_off == "Разрешено" && Convert.ToDouble(percentage.Substring(0, percentage.Length - 1)) != 0)
                                 {
                                     double sumD;
                                     double.TryParse(sum, out sumD);
@@ -109,6 +119,13 @@ namespace Банк
                                     flowLayoutPanel5.Visible = false;
                                     pnAnotherTransfer.Visible = false;
                                     pnTransfer.Visible = false;
+                                }
+
+                                if (Convert.ToDouble(percentage.Substring(0, percentage.Length - 1)) == 0)
+                                {
+                                    расчётСтавкиToolStripMenuItem.Visible = false;
+                                    pnAnotherTransfer.Visible = true;
+                                    pnTransfer.Visible = true;
                                 }
 
                                 if (contribution != "Разрешено")
@@ -187,6 +204,23 @@ namespace Банк
             LoadForm(new info_bank_account());
             info_bank_account form = new info_bank_account();
             pnAboutDeposit.Size = new Size(pnAboutDeposit.Width, form.Height);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            Function(new TransferToAccount());
+        }
+
+        private void Function(object Form)
+        {
+            if (Global.pnDeposit.Controls.Count > 0)
+                Global.pnDeposit.Controls.RemoveAt(0);
+            Form form = Form as Form;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            Global.pnDeposit.Controls.Add(form);
+            Global.pnDeposit.Tag = form;
+            form.Show();
         }
     }
 }

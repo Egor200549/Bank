@@ -43,6 +43,10 @@
             this.flpnPersonalData = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDisplayPersonalData = new System.Windows.Forms.Button();
             this.btnUpdateData = new System.Windows.Forms.Button();
+            this.flwAccounts = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAccounts = new System.Windows.Forms.Button();
+            this.btnDisplayAccount = new System.Windows.Forms.Button();
+            this.btnOpenAccount = new System.Windows.Forms.Button();
             this.flpnDeposit = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDeposit = new System.Windows.Forms.Button();
             this.btnDisplayDeposit = new System.Windows.Forms.Button();
@@ -50,10 +54,12 @@
             this.btnCloseDeposit = new System.Windows.Forms.Button();
             this.timerCredit = new System.Windows.Forms.Timer(this.components);
             this.timerPersonalData = new System.Windows.Forms.Timer(this.components);
+            this.timerAccounts = new System.Windows.Forms.Timer(this.components);
             this.flpnCredit.SuspendLayout();
             this.pnHome.SuspendLayout();
             this.flpnMenu.SuspendLayout();
             this.flpnPersonalData.SuspendLayout();
+            this.flwAccounts.SuspendLayout();
             this.flpnDeposit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,7 +168,7 @@
             this.flpnCredit.Controls.Add(this.btnDisplayCredit);
             this.flpnCredit.Controls.Add(this.btnOpenCredit);
             this.flpnCredit.Controls.Add(this.btnCloseCredit);
-            this.flpnCredit.Location = new System.Drawing.Point(0, 146);
+            this.flpnCredit.Location = new System.Drawing.Point(0, 219);
             this.flpnCredit.Margin = new System.Windows.Forms.Padding(0);
             this.flpnCredit.MaximumSize = new System.Drawing.Size(472, 217);
             this.flpnCredit.MinimumSize = new System.Drawing.Size(472, 73);
@@ -203,8 +209,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.flpnMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpnMenu.Controls.Add(this.flpnPersonalData);
+            this.flpnMenu.Controls.Add(this.flwAccounts);
             this.flpnMenu.Controls.Add(this.flpnDeposit);
             this.flpnMenu.Controls.Add(this.flpnCredit);
+            this.flpnMenu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpnMenu.Location = new System.Drawing.Point(34, 85);
             this.flpnMenu.Name = "flpnMenu";
             this.flpnMenu.Size = new System.Drawing.Size(472, 625);
@@ -256,13 +264,76 @@
             this.btnUpdateData.UseVisualStyleBackColor = false;
             this.btnUpdateData.Click += new System.EventHandler(this.btnUpdateData_Click);
             // 
+            // flwAccounts
+            // 
+            this.flwAccounts.Controls.Add(this.btnAccounts);
+            this.flwAccounts.Controls.Add(this.btnDisplayAccount);
+            this.flwAccounts.Controls.Add(this.btnOpenAccount);
+            this.flwAccounts.Location = new System.Drawing.Point(0, 73);
+            this.flwAccounts.Margin = new System.Windows.Forms.Padding(0);
+            this.flwAccounts.MaximumSize = new System.Drawing.Size(472, 146);
+            this.flwAccounts.MinimumSize = new System.Drawing.Size(472, 73);
+            this.flwAccounts.Name = "flwAccounts";
+            this.flwAccounts.Size = new System.Drawing.Size(472, 73);
+            this.flwAccounts.TabIndex = 5;
+            // 
+            // btnAccounts
+            // 
+            this.btnAccounts.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAccounts.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccounts.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAccounts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAccounts.Location = new System.Drawing.Point(0, 0);
+            this.btnAccounts.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAccounts.Name = "btnAccounts";
+            this.btnAccounts.Size = new System.Drawing.Size(398, 73);
+            this.btnAccounts.TabIndex = 2;
+            this.btnAccounts.Text = "Счета";
+            this.btnAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAccounts.UseVisualStyleBackColor = false;
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
+            // 
+            // btnDisplayAccount
+            // 
+            this.btnDisplayAccount.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnDisplayAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDisplayAccount.Font = new System.Drawing.Font("Century", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDisplayAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnDisplayAccount.Location = new System.Drawing.Point(398, 0);
+            this.btnDisplayAccount.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDisplayAccount.Name = "btnDisplayAccount";
+            this.btnDisplayAccount.Size = new System.Drawing.Size(74, 73);
+            this.btnDisplayAccount.TabIndex = 3;
+            this.btnDisplayAccount.Text = "▼";
+            this.btnDisplayAccount.UseVisualStyleBackColor = true;
+            this.btnDisplayAccount.Click += new System.EventHandler(this.btnDisplayAccount_Click);
+            // 
+            // btnOpenAccount
+            // 
+            this.btnOpenAccount.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnOpenAccount.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnOpenAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenAccount.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnOpenAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnOpenAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOpenAccount.Location = new System.Drawing.Point(0, 73);
+            this.btnOpenAccount.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOpenAccount.Name = "btnOpenAccount";
+            this.btnOpenAccount.Size = new System.Drawing.Size(472, 73);
+            this.btnOpenAccount.TabIndex = 3;
+            this.btnOpenAccount.Text = " Открыть счёт";
+            this.btnOpenAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOpenAccount.UseVisualStyleBackColor = false;
+            // 
             // flpnDeposit
             // 
             this.flpnDeposit.Controls.Add(this.btnDeposit);
             this.flpnDeposit.Controls.Add(this.btnDisplayDeposit);
             this.flpnDeposit.Controls.Add(this.btnOpenDeposit);
             this.flpnDeposit.Controls.Add(this.btnCloseDeposit);
-            this.flpnDeposit.Location = new System.Drawing.Point(0, 73);
+            this.flpnDeposit.Location = new System.Drawing.Point(0, 146);
             this.flpnDeposit.Margin = new System.Windows.Forms.Padding(0);
             this.flpnDeposit.MaximumSize = new System.Drawing.Size(472, 217);
             this.flpnDeposit.MinimumSize = new System.Drawing.Size(472, 73);
@@ -347,6 +418,11 @@
             this.timerPersonalData.Interval = 10;
             this.timerPersonalData.Tick += new System.EventHandler(this.timerPersonalData_Tick);
             // 
+            // timerAccounts
+            // 
+            this.timerAccounts.Interval = 10;
+            this.timerAccounts.Tick += new System.EventHandler(this.timerAccounts_Tick);
+            // 
             // CustomerAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -363,6 +439,7 @@
             this.pnHome.PerformLayout();
             this.flpnMenu.ResumeLayout(false);
             this.flpnPersonalData.ResumeLayout(false);
+            this.flwAccounts.ResumeLayout(false);
             this.flpnDeposit.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -390,5 +467,10 @@
         private System.Windows.Forms.Button btnDisplayCredit;
         private System.Windows.Forms.Button btnDisplayPersonalData;
         private System.Windows.Forms.Timer timerPersonalData;
+        private System.Windows.Forms.FlowLayoutPanel flwAccounts;
+        private System.Windows.Forms.Button btnAccounts;
+        private System.Windows.Forms.Button btnDisplayAccount;
+        private System.Windows.Forms.Button btnOpenAccount;
+        private System.Windows.Forms.Timer timerAccounts;
     }
 }

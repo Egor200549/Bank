@@ -207,11 +207,12 @@ namespace Банк
             /*Random random = new Random();
             Global.code = random.Next(1000, 9999).ToString();*/
             Global.code = "1";
+
             Number.passport_customer = dataGridView1.SelectedRows[0].Cells[4].Value.ToString().Trim();
             try
             {
                 /*WebClient client = new WebClient();
-                Stream stream = client.OpenRead(string.Format("https://platform.clickatell.com/messages/http/send?apiKey=rM-C7AU_SRS-VEpht3wYKw==&to=79111355208&content={0}", Global.code));
+                Stream stream = client.OpenRead(string.Format("https://platform.clickatell.com/messages/http/send?apiKey=rM-C7AU_SRS-VEpht3wYKw==&to=79111355208&content={1}", Global.code));
                 StreamReader reader = new StreamReader(stream);*/
                 MessageBox.Show("Код подтверждения успешно отправлен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

@@ -14,16 +14,16 @@ using static Банк.MainDisplay;
 
 namespace Банк
 {
-    public partial class DepositCustomer : Form
+    public partial class AccountsCustomer : Form
     {
-        SqlConnection connect = new SqlConnection(Global.database);
-
-        public DepositCustomer()
+        public AccountsCustomer()
         {
             InitializeComponent();
         }
 
-        private void DepositCustomer_Load(object sender, EventArgs e)
+        SqlConnection connect = new SqlConnection(Global.database);
+
+        private void AccountsCustomer_Load(object sender, EventArgs e)
         {
             dataGridView1.Visible = false;
             label1.Visible = false;
@@ -34,7 +34,7 @@ namespace Банк
                 {
                     connect.Open();
 
-                    string checkCustomerPassport = "select count(passport_customer) from customersDeposits, customers, deposits where customersDeposits.customer_id = customers.id_customer and deposits.id_deposit = customersDeposits.deposit_id and deposit_percentange <> 0 and passport_customer = @passport_customer";
+                    string checkCustomerPassport = "select count(passport_customer) from customersDeposits, customers, deposits where customersDeposits.customer_id = customers.id_customer and deposits.id_deposit = customersDeposits.deposit_id and deposit_percentange = 0 and passport_customer = @passport_customer";
 
                     using (SqlCommand checkCust = new SqlCommand(checkCustomerPassport, connect))
                     {
@@ -49,7 +49,7 @@ namespace Банк
                         {
                             dataGridView1.Visible = true;
 
-                            string selectData = "select id_customer_deposit, name_deposit as Вклад, period_dep as 'Период (мес)', deposit_date as 'Дата вклада', return_deposit_date as 'Дата окончания вклада', deposit_amount as 'Сумма вклада', status_dep as 'Статус' from customersDeposits, customers, deposits where customers.id_customer = customersDeposits.customer_id and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and deposits.deposit_percentange <> 0";
+                            string selectData = "select id_customer_deposit, name_deposit as Счёт, deposit_date as 'Дата открытия', deposit_amount as 'Баланс' from customersDeposits, customers, deposits where customers.id_customer = customersDeposits.customer_id and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and deposits.deposit_percentange = 0";
 
                             using (SqlCommand cmd = new SqlCommand(selectData, connect))
                             {
@@ -64,10 +64,7 @@ namespace Банк
                                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                                dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                                dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                                dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                                dataGridView1.Columns[4].ValueType = typeof(SqlMoney);
+                                dataGridView1.Columns[3].ValueType = typeof(SqlMoney);
                             }
                         }
                     }

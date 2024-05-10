@@ -102,6 +102,14 @@ namespace Банк
             btnDisplayPersonalData.BackColor = Color.FromArgb(23, 24, 29);
             btnDisplayPersonalData.ForeColor = Color.WhiteSmoke;
             btnDisplayPersonalData.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+
+            btnAccounts.BackColor = Color.WhiteSmoke;
+            btnAccounts.ForeColor = Color.FromArgb(23, 24, 29);
+            btnAccounts.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayAccount.BackColor = Color.WhiteSmoke;
+            btnDisplayAccount.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayAccount.FlatAppearance.BorderColor = Color.Silver;
+
             LoadForm(new DataCustomer());
         }
 
@@ -153,6 +161,13 @@ namespace Банк
             btnDisplayCredit.BackColor = Color.FromArgb(23, 24, 29);
             btnDisplayCredit.ForeColor = Color.WhiteSmoke;
             btnDisplayCredit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+
+            btnAccounts.BackColor = Color.WhiteSmoke;
+            btnAccounts.ForeColor = Color.FromArgb(23, 24, 29);
+            btnAccounts.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayAccount.BackColor = Color.WhiteSmoke;
+            btnDisplayAccount.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayAccount.FlatAppearance.BorderColor = Color.Silver;
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
@@ -177,6 +192,13 @@ namespace Банк
             btnDisplayDeposit.BackColor = Color.FromArgb(23, 24, 29);
             btnDisplayDeposit.ForeColor = Color.WhiteSmoke;
             btnDisplayDeposit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+
+            btnAccounts.BackColor = Color.WhiteSmoke;
+            btnAccounts.ForeColor = Color.FromArgb(23, 24, 29);
+            btnAccounts.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayAccount.BackColor = Color.WhiteSmoke;
+            btnDisplayAccount.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayAccount.FlatAppearance.BorderColor = Color.Silver;
 
             LoadForm(new DepositCustomer());
         }
@@ -251,6 +273,70 @@ namespace Банк
         private void btnUpdateData_Click(object sender, EventArgs e)
         {
             LoadForm(new UpdatePersonalData());
+        }
+
+        private void btnAccounts_Click(object sender, EventArgs e)
+        {
+            btnPersonalData.BackColor = Color.WhiteSmoke;
+            btnPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnPersonalData.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayPersonalData.BackColor = Color.WhiteSmoke;
+            btnDisplayPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayPersonalData.FlatAppearance.BorderColor = Color.WhiteSmoke;
+
+            btnCredit.BackColor = Color.WhiteSmoke;
+            btnCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnCredit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayCredit.BackColor = Color.WhiteSmoke;
+            btnDisplayCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayCredit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnDeposit.BackColor = Color.WhiteSmoke;
+            btnDeposit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDeposit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayDeposit.BackColor = Color.WhiteSmoke;
+            btnDisplayDeposit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayDeposit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnAccounts.BackColor = Color.FromArgb(23, 24, 29);
+            btnAccounts.ForeColor = Color.WhiteSmoke;
+            btnAccounts.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+            btnDisplayAccount.BackColor = Color.FromArgb(23, 24, 29);
+            btnDisplayAccount.ForeColor = Color.WhiteSmoke;
+            btnDisplayAccount.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+
+            LoadForm(new AccountsCustomer());
+        }
+
+        bool dataAccounts;
+
+        private void timerAccounts_Tick(object sender, EventArgs e)
+        {
+            if (dataAccounts)
+            {
+                flwAccounts.Height -= 10;
+                if (flwAccounts.Height == flwAccounts.MinimumSize.Height)
+                {
+                    dataAccounts = false;
+                    timerAccounts.Stop();
+                    btnDisplayAccount.Text = "▼";
+                }
+            }
+            else
+            {
+                flwAccounts.Height += 10;
+                if (flwAccounts.Height == flwAccounts.MaximumSize.Height)
+                {
+                    dataAccounts = true;
+                    timerAccounts.Stop();
+                    btnDisplayAccount.Text = "▲";
+                }
+            }
+        }
+
+        private void btnDisplayAccount_Click(object sender, EventArgs e)
+        {
+            timerAccounts.Start();
         }
     }
 }
