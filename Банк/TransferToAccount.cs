@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +36,13 @@ namespace Банк
 
         SqlConnection connect = new SqlConnection(Global.database);
 
+        string signCurrency = "";
+
         private void TransferToAccount_Load(object sender, EventArgs e)
         {
+            dataGridView1.Visible = false;
+            label1.Visible = false;
+
             if (connect.State == ConnectionState.Closed)
             {
                 try
@@ -79,23 +86,70 @@ namespace Банк
                                 if (currency == "CNY")
                                 {
                                     lblSum.Text += " ¥";
+                                    signCurrency = "¥";
                                 }
                                 else if (currency == "RUB")
                                 {
                                     lblSum.Text += " ₽";
+                                    signCurrency = "₽";
                                 }
                                 else if (currency == "AED")
                                 {
                                     lblSum.Text += " dh";
+                                    signCurrency = "dh";
                                 }
                                 else if (currency == "USD")
                                 {
                                     lblSum.Text += " $";
+                                    signCurrency = "$";
                                 }
                                 else if (currency == "EUR")
                                 {
                                     lblSum.Text += " €";
+                                    signCurrency = "€";
                                 }
+                            }
+                            reader.Close();
+                        }
+                    }
+
+                    string checkCustomerPassport = "select count(passport_customer) from customersDeposits, customers, deposits where customersDeposits.customer_id = customers.id_customer and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and id_customer_deposit != @dep and contribution = 1;";
+
+                    using (SqlCommand checkCust = new SqlCommand(checkCustomerPassport, connect))
+                    {
+                        checkCust.Parameters.AddWithValue("@passport_customer", Number.passport_customer);
+                        checkCust.Parameters.AddWithValue("@dep", Global.deposit);
+                        int count = (int)checkCust.ExecuteScalar();
+
+                        if (count == 0)
+                        {
+                            label1.Visible = true;
+                            txtSumToTransfer.Enabled = false;
+                        }
+                        else
+                        {
+                            dataGridView1.Visible = true;
+
+                            selectData = "select id_customer_deposit, name_deposit as Название, period_dep as 'Период (мес)', deposit_date as 'Дата открытия', return_deposit_date as 'Дата окончания', deposit_amount as 'Сумма', status_dep as 'Статус' from deposits, customersDeposits, customers where contribution = 1 and deposits.id_deposit = customersDeposits.deposit_id and status_dep = 'Действующий' and id_customer_deposit != @dep and customers.id_customer = customersDeposits.customer_id and passport_customer =  @passport";
+
+                            using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                            {
+                                cmd.Parameters.AddWithValue("@passport", Number.passport_customer);
+                                cmd.Parameters.AddWithValue("@dep", Global.deposit);
+
+                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                DataTable table = new DataTable();
+                                adapter.Fill(table);
+
+                                dataGridView1.DataSource = table;
+                                dataGridView1.Columns[0].Visible = false;
+                                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[5].ValueType = typeof(SqlMoney);
                             }
                         }
                     }
@@ -118,16 +172,31 @@ namespace Банк
 
         private void lblGoBack_MouseEnter(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
+            System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
             label.ForeColor = Color.Silver;
             Cursor = Cursors.Hand;
         }
 
         private void lblGoBack_MouseLeave(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
+            System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
             label.ForeColor = Color.White;
             Cursor = Cursors.Default;
+        }
+
+        string inputed = "";
+
+        private void txtSumToTransfer_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSumToTransfer.Text.Length <= 1)
+            {
+                txtSumToTransfer.Text = txtSumToTransfer.Text + " " + signCurrency;
+            }
+            else
+            {
+                inputed = txtSumToTransfer.Text.Substring(0, txtSumToTransfer.Text.Length - 2);
+                txtSumToTransfer.Text = inputed + " " + signCurrency;
+            }
         }
     }
 }
