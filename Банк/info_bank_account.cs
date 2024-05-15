@@ -120,15 +120,15 @@ namespace Банк
                                     signCurrency = "€";
                                 }
 
-                                lblPercentage.Text = dep_percentage.ToString() + "%";
+                                lblAmount.Text = amount.ToString() + " " + signCurrency;
 
                                 if (amount >= min_sum && amount <= max_sum)
                                 {
-                                    lblAmount.Text = amount.ToString() + " " + signCurrency;
+                                    lblPercentage.Text = dep_percentage.ToString() + "%";
                                 }
                                 else
                                 {
-                                    lblAmount.Text = dif_percentage.ToString() + " " + signCurrency;
+                                    lblPercentage.Text = dif_percentage.ToString() + "%";
                                 }
 
                                 if (contribution)

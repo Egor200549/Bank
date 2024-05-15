@@ -96,12 +96,6 @@ namespace Банк
             maskedText.Select(0, 0);
         }
 
-        private void mTxtTelephone_Click(object sender, EventArgs e)
-        {
-            MaskedTextBox maskedText = (MaskedTextBox)sender;
-            maskedText.Select(4, 0);
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtName.Text == "" || txtLastName.Text == "" || txtMiddleName.Text == "" ||

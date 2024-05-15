@@ -9,8 +9,11 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
 using static Банк.MainDisplay;
 
 namespace Банк
@@ -37,11 +40,14 @@ namespace Банк
         SqlConnection connect = new SqlConnection(Global.database);
 
         string signCurrency = "";
+        double sum;
+        string min_sum;
 
         private void TransferToAccount_Load(object sender, EventArgs e)
         {
             dataGridView1.Visible = false;
             label1.Visible = false;
+            btnTranfer.Enabled = false;
 
             if (connect.State == ConnectionState.Closed)
             {
@@ -62,8 +68,7 @@ namespace Банк
                             while (reader.Read())
                             {
                                 string name = reader.GetString(0);
-                                string sum = reader.GetSqlMoney(1).ToDouble().ToString("N");
-                                string min_sum;
+                                sum = reader.GetSqlMoney(1).ToDouble();
 
                                 try
                                 {
@@ -71,7 +76,7 @@ namespace Банк
                                 }
                                 catch
                                 {
-                                    min_sum = "";
+                                    min_sum = "отсутствует";
                                 }
 
                                 string currency = reader.GetString(3);
@@ -80,7 +85,7 @@ namespace Банк
 
                                 lblNameAccountFrom.Text = name;
                                 lblPercentage.Text = current_percentage;
-                                lblSum.Text = sum;
+                                lblSum.Text = sum.ToString("N");
                                 lblNum.Text = "••" + contract_number.Substring(16, 4) + " • Неснижаемый остаток " + min_sum;
 
                                 if (currency == "CNY")
@@ -184,18 +189,78 @@ namespace Банк
             Cursor = Cursors.Default;
         }
 
-        string inputed = "";
-
-        private void txtSumToTransfer_KeyUp(object sender, KeyEventArgs e)
+        private void txtSumToTransfer_TextChanged(object sender, EventArgs e)
         {
-            if (txtSumToTransfer.Text.Length <= 1)
+            if (Regex.IsMatch(txtSumToTransfer.Text, @"^[0-9]{1,8}\,[0-9]{2}$") == false)
             {
-                txtSumToTransfer.Text = txtSumToTransfer.Text + " " + signCurrency;
+                txtSumToTransfer.ForeColor = Color.Red;
+                btnTranfer.Enabled = false;
             }
             else
             {
-                inputed = txtSumToTransfer.Text.Substring(0, txtSumToTransfer.Text.Length - 2);
-                txtSumToTransfer.Text = inputed + " " + signCurrency;
+                txtSumToTransfer.ForeColor = Color.Black;
+                btnTranfer.Enabled = true;
+            }
+        }
+
+        private void btnTranfer_Click(object sender, EventArgs e)
+        {
+            double.TryParse(txtSumToTransfer.Text, out double sum_to_transfer);
+
+            if (sum_to_transfer > sum)
+            {
+                MessageBox.Show("Недостаточно средств", "Перевод недоступен", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (connect.State == ConnectionState.Closed)
+                {
+                    try
+                    {
+                        connect.Open();
+
+                        using (SqlCommand command = new SqlCommand("transfer_", connect))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            SqlParameter id_from = new SqlParameter
+                            {
+                                ParameterName = "@from",
+                                Value = Global.deposit
+                            };
+
+                            command.Parameters.Add(id_from);
+
+                            SqlParameter id_to = new SqlParameter
+                            {
+                                ParameterName = "@to",
+                                Value = dataGridView1.SelectedRows[0].Cells[0].Value
+                            };
+
+                            command.Parameters.Add(id_to);
+
+                            SqlParameter amount_of_money = new SqlParameter
+                            {
+                                ParameterName = "@sum",
+                                Value = sum_to_transfer
+                            };
+
+                            command.Parameters.Add(amount_of_money);
+                            command.ExecuteScalar();
+
+                            MessageBox.Show("Перевод успешно осуществлен", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadForm(new Deposit());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка: " + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connect.Close();
+                    }
+                }
             }
         }
     }
