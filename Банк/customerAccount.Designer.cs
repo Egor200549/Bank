@@ -175,6 +175,7 @@
             this.flpnCredit.Name = "flpnCredit";
             this.flpnCredit.Size = new System.Drawing.Size(472, 73);
             this.flpnCredit.TabIndex = 0;
+            this.flpnCredit.Visible = false;
             // 
             // btnDisplayCredit
             // 
@@ -326,6 +327,7 @@
             this.btnOpenAccount.Text = " Открыть счёт";
             this.btnOpenAccount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenAccount.UseVisualStyleBackColor = false;
+            this.btnOpenAccount.Click += new System.EventHandler(this.btnOpenAccount_Click);
             // 
             // flpnDeposit
             // 

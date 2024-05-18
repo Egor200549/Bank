@@ -190,6 +190,7 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(440, 100);
             this.panel7.TabIndex = 5;
+            this.panel7.Visible = false;
             // 
             // pictureBox7
             // 
@@ -236,6 +237,7 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(440, 100);
             this.panel8.TabIndex = 7;
+            this.panel8.Visible = false;
             // 
             // pictureBox8
             // 
