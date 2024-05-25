@@ -41,6 +41,7 @@
             System.Windows.Forms.Panel panel7;
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Panel panel8;
             this.lblGoBack = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtSum = new System.Windows.Forms.TextBox();
@@ -73,6 +74,7 @@
             panel7 = new System.Windows.Forms.Panel();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
+            panel8 = new System.Windows.Forms.Panel();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -359,6 +361,17 @@
             this.lblIncome.TabIndex = 23;
             this.lblIncome.Text = "label4";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label1.Location = new System.Drawing.Point(20, 10);
+            label1.Margin = new System.Windows.Forms.Padding(0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(357, 28);
+            label1.TabIndex = 0;
+            label1.Text = "Выберите параметры вклада";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
@@ -414,19 +427,10 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(702, 48);
             this.flowLayoutPanel2.TabIndex = 4;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label1.Location = new System.Drawing.Point(20, 10);
-            label1.Margin = new System.Windows.Forms.Padding(0);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(357, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Выберите параметры вклада";
-            // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(panel8);
             this.panel2.Controls.Add(panel7);
             this.panel2.Controls.Add(panel6);
             this.panel2.Controls.Add(panel5);
@@ -440,7 +444,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 178);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(702, 531);
+            this.panel2.Size = new System.Drawing.Size(702, 560);
             this.panel2.TabIndex = 5;
             // 
             // label7
@@ -492,12 +496,19 @@
             this.btnContinue.UseVisualStyleBackColor = false;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
             // 
+            // panel8
+            // 
+            panel8.Location = new System.Drawing.Point(20, 527);
+            panel8.Name = "panel8";
+            panel8.Size = new System.Drawing.Size(662, 21);
+            panel8.TabIndex = 32;
+            // 
             // openCurrentAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(702, 709);
+            this.ClientSize = new System.Drawing.Size(702, 738);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);

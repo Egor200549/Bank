@@ -54,7 +54,7 @@ namespace Банк
                                 string prolongation = reader.GetString(3);
                                 string name = reader.GetString(4);
 
-                                lblName.Text = "Открыть" + name;
+                                lblName.Text = "Открыть " + name;
                                 lblPercentage.Text = percentage;
                                 lblInterest.Text = name_interest;
                                 lblProlongation.Text = prolongation;
@@ -79,18 +79,18 @@ namespace Банк
                                 {
                                     signCurrency = "€";
                                 }
-                                lblSum.Text = Global.openDepositSum.ToString("N") + signCurrency;
+                                lblSum.Text = Global.openDepositSum.ToString("N")+ " " + signCurrency;
                                 lblPeriod.Text = Global.openDepositPeriod.ToString() + " мес.";
                             }
+                            reader.Close();
                         }
                     }
 
-                    string checkCustomerPassport = "select count(passport_customer) from customersDeposits, customers, deposits where customersDeposits.customer_id = customers.id_customer and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and id_customer_deposit != @dep and contribution = 1;";
+                    string checkCustomerPassport = "select count(passport_customer) from customersDeposits, customers, deposits where customersDeposits.customer_id = customers.id_customer and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and contribution = 1;";
 
                     using (SqlCommand checkCust = new SqlCommand(checkCustomerPassport, connect))
                     {
                         checkCust.Parameters.AddWithValue("@passport_customer", Number.passport_customer);
-                        checkCust.Parameters.AddWithValue("@dep", Global.deposit);
                         int count = (int)checkCust.ExecuteScalar();
 
                         if (count == 0)
@@ -101,12 +101,11 @@ namespace Банк
                         {
                             dataGridView1.Visible = true;
 
-                            selectData = "select id_customer_deposit, name_deposit as Название, bank_account as 'Номер счета', deposit_date as 'Дата открытия', return_deposit_date as 'Дата окончания', deposit_amount as 'Сумма', status_dep as 'Статус' from deposits, customersDeposits, customers where contribution = 1 and deposits.id_deposit = customersDeposits.deposit_id and status_dep = 'Действующий' and id_customer_deposit != @dep and customers.id_customer = customersDeposits.customer_id and passport_customer =  @passport";
+                            selectData = "select id_customer_deposit, name_deposit as Название, bank_account as 'Номер счета', deposit_date as 'Дата открытия', return_deposit_date as 'Дата окончания', deposit_amount as 'Сумма', status_dep as 'Статус' from deposits, customersDeposits, customers where contribution = 1 and deposits.id_deposit = customersDeposits.deposit_id and status_dep = 'Действующий' and customers.id_customer = customersDeposits.customer_id and passport_customer =  @passport";
 
                             using (SqlCommand cmd = new SqlCommand(selectData, connect))
                             {
                                 cmd.Parameters.AddWithValue("@passport", Number.passport_customer);
-                                cmd.Parameters.AddWithValue("@dep", Global.deposit);
 
                                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                                 DataTable table = new DataTable();
@@ -117,9 +116,12 @@ namespace Банк
                                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[3].Visible = false;
                                 dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[4].Visible = false;
                                 dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[6].Visible = false;
                                 dataGridView1.Columns[5].ValueType = typeof(SqlMoney);
                             }
                         }
@@ -166,6 +168,34 @@ namespace Банк
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
             label.ForeColor = Color.White;
             Cursor = Cursors.Default;
+        }
+
+        private void dataGridView1_SizeChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.Width > 680 && dataGridView1.DataSource != null)
+            {
+                dataGridView1.Columns[3].Visible = true;
+                dataGridView1.Columns[4].Visible = true;
+                dataGridView1.Columns[6].Visible = true;
+            }
+            if (dataGridView1.Width <= 680 && dataGridView1.DataSource != null)
+            {
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+            }
+        }
+
+        private void btnTranfer_Click(object sender, EventArgs e)
+        {
+            if (Global.openDepositSum > double.Parse(dataGridView1.SelectedRows[0].Cells[5].Value.ToString()))
+            {
+                MessageBox.Show("Недостаточно средств", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+            }
         }
     }
 }

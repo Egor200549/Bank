@@ -67,6 +67,9 @@ namespace Банк
                                 dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[3].Visible = false;
+                                dataGridView1.Columns[4].Visible = false;
+                                dataGridView1.Columns[6].Visible = false;
                                 dataGridView1.Columns[4].ValueType = typeof(SqlMoney);
                             }
                         }
@@ -99,6 +102,22 @@ namespace Банк
         {
             Global.deposit = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
             LoadForm(new Deposit());
+        }
+
+        private void dataGridView1_SizeChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.Width > 720)
+            {
+                dataGridView1.Columns[3].Visible = true;
+                dataGridView1.Columns[4].Visible = true;
+                dataGridView1.Columns[6].Visible = true;
+            }
+            if (dataGridView1.Width <= 720 && dataGridView1.DataSource != null)
+            {
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+            }
         }
     }
 }

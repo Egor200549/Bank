@@ -32,9 +32,9 @@
             System.Windows.Forms.Panel panel2;
             System.Windows.Forms.Panel panel4;
             System.Windows.Forms.Label label5;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Panel panel3;
             System.Windows.Forms.Label label3;
@@ -50,6 +50,7 @@
             this.lblSum = new System.Windows.Forms.Label();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.lblNameAccountFrom = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
@@ -75,7 +76,7 @@
             panel1.Location = new System.Drawing.Point(0, 0);
             panel1.Margin = new System.Windows.Forms.Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(745, 73);
+            panel1.Size = new System.Drawing.Size(720, 73);
             panel1.TabIndex = 0;
             // 
             // lblGoBack
@@ -85,7 +86,7 @@
             this.lblGoBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblGoBack.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblGoBack.ForeColor = System.Drawing.Color.White;
-            this.lblGoBack.Location = new System.Drawing.Point(604, 22);
+            this.lblGoBack.Location = new System.Drawing.Point(579, 22);
             this.lblGoBack.Name = "lblGoBack";
             this.lblGoBack.Size = new System.Drawing.Size(112, 28);
             this.lblGoBack.TabIndex = 6;
@@ -109,7 +110,9 @@
             // 
             // panel2
             // 
+            panel2.AutoScroll = true;
             panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            panel2.Controls.Add(this.panel5);
             panel2.Controls.Add(this.btnTranfer);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(label5);
@@ -123,7 +126,7 @@
             panel2.Location = new System.Drawing.Point(0, 73);
             panel2.Margin = new System.Windows.Forms.Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(745, 736);
+            panel2.Size = new System.Drawing.Size(720, 736);
             panel2.TabIndex = 2;
             // 
             // btnTranfer
@@ -135,8 +138,9 @@
             this.btnTranfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTranfer.Font = new System.Drawing.Font("Century", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnTranfer.Location = new System.Drawing.Point(20, 647);
+            this.btnTranfer.Margin = new System.Windows.Forms.Padding(0);
             this.btnTranfer.Name = "btnTranfer";
-            this.btnTranfer.Size = new System.Drawing.Size(705, 52);
+            this.btnTranfer.Size = new System.Drawing.Size(680, 52);
             this.btnTranfer.TabIndex = 7;
             this.btnTranfer.Text = "Перевести";
             this.btnTranfer.UseVisualStyleBackColor = false;
@@ -152,7 +156,7 @@
             panel4.Location = new System.Drawing.Point(20, 555);
             panel4.Margin = new System.Windows.Forms.Padding(0);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(705, 55);
+            panel4.Size = new System.Drawing.Size(680, 55);
             panel4.TabIndex = 6;
             // 
             // txtSumToTransfer
@@ -167,7 +171,7 @@
             this.txtSumToTransfer.Location = new System.Drawing.Point(12, 14);
             this.txtSumToTransfer.Margin = new System.Windows.Forms.Padding(0);
             this.txtSumToTransfer.Name = "txtSumToTransfer";
-            this.txtSumToTransfer.Size = new System.Drawing.Size(677, 25);
+            this.txtSumToTransfer.Size = new System.Drawing.Size(632, 25);
             this.txtSumToTransfer.TabIndex = 1;
             this.txtSumToTransfer.TextChanged += new System.EventHandler(this.txtSumToTransfer_TextChanged);
             // 
@@ -190,7 +194,7 @@
             this.label1.Location = new System.Drawing.Point(20, 253);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(705, 253);
+            this.label1.Size = new System.Drawing.Size(680, 253);
             this.label1.TabIndex = 3;
             this.label1.Text = "Нет счетов";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,34 +204,34 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(28)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.Location = new System.Drawing.Point(20, 253);
@@ -240,8 +244,9 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(705, 253);
+            this.dataGridView1.Size = new System.Drawing.Size(680, 253);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.SizeChanged += new System.EventHandler(this.dataGridView1_SizeChanged);
             // 
             // label4
             // 
@@ -265,7 +270,7 @@
             panel3.Location = new System.Drawing.Point(20, 112);
             panel3.Margin = new System.Windows.Forms.Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(705, 90);
+            panel3.Size = new System.Drawing.Size(680, 90);
             panel3.TabIndex = 3;
             // 
             // lblNum
@@ -285,7 +290,7 @@
             this.flowLayoutPanel1.Controls.Add(this.lblPercentage);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(584, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(559, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 15, 48, 0);
@@ -346,12 +351,19 @@
             label2.TabIndex = 0;
             label2.Text = "Детали перевода";
             // 
+            // panel5
+            // 
+            this.panel5.Location = new System.Drawing.Point(20, 701);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(685, 23);
+            this.panel5.TabIndex = 8;
+            // 
             // TransferToAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(745, 809);
+            this.ClientSize = new System.Drawing.Size(720, 809);
             this.Controls.Add(panel2);
             this.Controls.Add(panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -384,5 +396,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSumToTransfer;
         private System.Windows.Forms.Button btnTranfer;
+        private System.Windows.Forms.Panel panel5;
     }
 }
