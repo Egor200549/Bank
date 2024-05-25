@@ -49,7 +49,7 @@ namespace Банк
                         {
                             dataGridView1.Visible = true;
 
-                            string selectData = "select id_customer_deposit, name_deposit as Вклад, period_dep as 'Период (мес)', deposit_date as 'Дата вклада', return_deposit_date as 'Дата окончания вклада', deposit_amount as 'Сумма вклада', status_dep as 'Статус' from customersDeposits, customers, deposits where customers.id_customer = customersDeposits.customer_id and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and deposits.deposit_percentange <> 0";
+                            string selectData = "select id_customer_deposit, name_deposit as Вклад, bank_account as 'Номер счета', deposit_date as 'Дата вклада', return_deposit_date as 'Дата окончания вклада', deposit_amount as 'Сумма вклада', status_dep as 'Статус' from customersDeposits, customers, deposits where customers.id_customer = customersDeposits.customer_id and deposits.id_deposit = customersDeposits.deposit_id and passport_customer = @passport_customer and deposits.deposit_percentange <> 0";
 
                             using (SqlCommand cmd = new SqlCommand(selectData, connect))
                             {
@@ -61,8 +61,8 @@ namespace Банк
 
                                 dataGridView1.DataSource = table;
                                 dataGridView1.Columns[0].Visible = false;
-                                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                                 dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

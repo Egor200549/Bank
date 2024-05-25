@@ -7,47 +7,28 @@ using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static Банк.MainDisplay;
 
 namespace Банк
 {
-    public partial class TransferToAccount : Form
+    public partial class openingDeposit : Form
     {
-        public TransferToAccount()
+        public openingDeposit()
         {
             InitializeComponent();
         }
 
-        private void LoadForm(object Form)
-        {
-            if (Global.pnDeposit.Controls.Count > 0)
-                Global.pnDeposit.Controls.RemoveAt(0);
-            Form form = Form as Form;
-            form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
-            Global.pnDeposit.Controls.Add(form);
-            Global.pnDeposit.Tag = form;
-            form.Show();
-        }
-
         SqlConnection connect = new SqlConnection(Global.database);
+        string signCurrency;
 
-        string signCurrency = "";
-        double sum;
-        string min_sum;
-
-        private void TransferToAccount_Load(object sender, EventArgs e)
+        private void openingDeposit_Load(object sender, EventArgs e)
         {
             dataGridView1.Visible = false;
-            label1.Visible = false;
-            btnTranfer.Enabled = false;
+            label7.Visible = false;
 
             if (connect.State == ConnectionState.Closed)
             {
@@ -55,11 +36,11 @@ namespace Банк
                 {
                     connect.Open();
 
-                    string selectData = "select name_deposit, deposit_amount, min_sum, name_currency, current_percentage, bank_account from customersDeposits, deposits, currencies where customersDeposits.deposit_id = deposits.id_deposit and currencies.currency_code = deposits.currency_code and id_customer_deposit = @id_dep;";
+                    string selectData = "select name_currency, deposit_percentange, name_interest, iif(prolongation = 1, 'Да', 'Нет') as prolongation, name_deposit_default from deposits, interestPaymentsDep, currencies where deposits.interest_dep = interestPaymentsDep.id_interest_dep and currencies.currency_code = deposits.currency_code and id_deposit = @id_dep;";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@id_dep", Global.deposit);
+                        cmd.Parameters.AddWithValue("@id_dep", Global.openDeposit);
 
                         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -67,54 +48,40 @@ namespace Банк
                         {
                             while (reader.Read())
                             {
-                                string name = reader.GetString(0);
-                                sum = reader.GetSqlMoney(1).ToDouble();
+                                string currency = reader.GetString(0);
+                                string percentage = reader.GetDouble(1).ToString() + "%";
+                                string name_interest = reader.GetString(2);
+                                string prolongation = reader.GetString(3);
+                                string name = reader.GetString(4);
 
-                                try
-                                {
-                                    min_sum = reader.GetSqlMoney(2).ToDouble().ToString("N");
-                                }
-                                catch
-                                {
-                                    min_sum = "отсутствует";
-                                }
-
-                                string currency = reader.GetString(3);
-                                string current_percentage = reader.GetDouble(4).ToString() + "%";
-                                string contract_number = reader.GetString(5);
-
-                                lblNameAccountFrom.Text = name;
-                                lblPercentage.Text = current_percentage;
-                                lblSum.Text = sum.ToString("N");
-                                lblNum.Text = "••" + contract_number.Substring(16, 4) + " • Неснижаемый остаток " + min_sum;
+                                lblName.Text = "Открыть" + name;
+                                lblPercentage.Text = percentage;
+                                lblInterest.Text = name_interest;
+                                lblProlongation.Text = prolongation;
 
                                 if (currency == "CNY")
                                 {
-                                    lblSum.Text += " ¥";
                                     signCurrency = "¥";
                                 }
                                 else if (currency == "RUB")
                                 {
-                                    lblSum.Text += " ₽";
                                     signCurrency = "₽";
                                 }
                                 else if (currency == "AED")
                                 {
-                                    lblSum.Text += " dh";
                                     signCurrency = "dh";
                                 }
                                 else if (currency == "USD")
                                 {
-                                    lblSum.Text += " $";
                                     signCurrency = "$";
                                 }
                                 else if (currency == "EUR")
                                 {
-                                    lblSum.Text += " €";
                                     signCurrency = "€";
                                 }
+                                lblSum.Text = Global.openDepositSum.ToString("N") + signCurrency;
+                                lblPeriod.Text = Global.openDepositPeriod.ToString() + " мес.";
                             }
-                            reader.Close();
                         }
                     }
 
@@ -128,8 +95,7 @@ namespace Банк
 
                         if (count == 0)
                         {
-                            label1.Visible = true;
-                            txtSumToTransfer.Enabled = false;
+                            label7.Visible = true;
                         }
                         else
                         {
@@ -158,6 +124,7 @@ namespace Банк
                             }
                         }
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -172,7 +139,19 @@ namespace Банк
 
         private void lblGoBack_Click(object sender, EventArgs e)
         {
-            LoadForm(new Deposit());
+            LoadForm(new openCurrentAccount());
+        }
+
+        private void LoadForm(object Form)
+        {
+            if (Global.pnDeposit.Controls.Count > 0)
+                Global.pnDeposit.Controls.RemoveAt(0);
+            Form form = Form as Form;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            Global.pnDeposit.Controls.Add(form);
+            Global.pnDeposit.Tag = form;
+            form.Show();
         }
 
         private void lblGoBack_MouseEnter(object sender, EventArgs e)
@@ -187,81 +166,6 @@ namespace Банк
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
             label.ForeColor = Color.White;
             Cursor = Cursors.Default;
-        }
-
-        private void txtSumToTransfer_TextChanged(object sender, EventArgs e)
-        {
-            if (Regex.IsMatch(txtSumToTransfer.Text, @"^[0-9]{1,8}\,[0-9]{2}$") == false)
-            {
-                txtSumToTransfer.ForeColor = Color.Red;
-                btnTranfer.Enabled = false;
-            }
-            else
-            {
-                txtSumToTransfer.ForeColor = Color.Black;
-                btnTranfer.Enabled = true;
-            }
-        }
-
-        private void btnTranfer_Click(object sender, EventArgs e)
-        {
-            double.TryParse(txtSumToTransfer.Text, out double sum_to_transfer);
-
-            if (sum_to_transfer > sum)
-            {
-                MessageBox.Show("Недостаточно средств", "Перевод недоступен", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                if (connect.State == ConnectionState.Closed)
-                {
-                    try
-                    {
-                        connect.Open();
-
-                        using (SqlCommand command = new SqlCommand("transfer_", connect))
-                        {
-                            command.CommandType = CommandType.StoredProcedure;
-
-                            SqlParameter id_from = new SqlParameter
-                            {
-                                ParameterName = "@from",
-                                Value = Global.deposit
-                            };
-
-                            command.Parameters.Add(id_from);
-
-                            SqlParameter id_to = new SqlParameter
-                            {
-                                ParameterName = "@to",
-                                Value = dataGridView1.SelectedRows[0].Cells[0].Value
-                            };
-
-                            command.Parameters.Add(id_to);
-
-                            SqlParameter amount_of_money = new SqlParameter
-                            {
-                                ParameterName = "@sum",
-                                Value = sum_to_transfer
-                            };
-
-                            command.Parameters.Add(amount_of_money);
-                            command.ExecuteScalar();
-
-                            MessageBox.Show("Перевод успешно осуществлен", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadForm(new Deposit());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка: " + ex, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
-                    }
-                }
-            }
         }
     }
 }

@@ -17,12 +17,18 @@ namespace Банк
         {
             public static Panel pn {  get; set; }
             public static Panel pnDeposit { get; set; }
-            public static int account { get; set; }
+            public static int employee_account { get; set; }
 
             public static string database = "Data Source=ACER-NITRO-5-49\\SQLEXPRESS;Initial Catalog=bank;Integrated Security=True";
             public static int deposit { get; set; }
             public static string code { get; set; }
             public static Button btn { get; set; }
+
+            //открытие вклада
+
+            public static int openDeposit { get; set; }
+            public static double openDepositSum { get; set; }
+            public static int openDepositPeriod { get; set; }
         }
 
         public static class Number

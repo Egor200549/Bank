@@ -76,7 +76,7 @@ namespace Банк
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@account", Global.account);
+                        cmd.Parameters.AddWithValue("@account", Global.employee_account);
 
                         SqlDataReader reader = cmd.ExecuteReader();
 

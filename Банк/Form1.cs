@@ -60,7 +60,7 @@ namespace Банк
 
                             if (table.Rows.Count >= 1)
                             {
-                                Global.account = (Convert.ToInt32(txtLogin.Text));
+                                Global.employee_account = (Convert.ToInt32(txtLogin.Text));
                                 MainDisplay mainDisplay = new MainDisplay();
                                 mainDisplay.Show();
                                 this.Hide();

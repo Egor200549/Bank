@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Банк.MainDisplay;
 
@@ -23,22 +15,20 @@ namespace Банк
             InitializeComponent();
         }
 
-        class Deposit
+        public class Deposit
         {
-            int id;
-            string name;
-            int currency_code;
-            double deposit_percentage;
-            string contribution;
-            string write_off;
-            string interest_dep;
+            public int id;
+            public string name;
+            public double deposit_percentage;
+            public string contribution;
+            public string write_off;
+            public string interest_dep;
 
-            public Deposit(int id, string name, int currency_code, double deposit_percentage, string contribution, string write_off,
+            public Deposit(int id, string name, double deposit_percentage, string contribution, string write_off,
                 string interest_dep)
             {
                 this.id = id;
                 this.name = name;
-                this.currency_code = currency_code;
                 this.deposit_percentage = deposit_percentage;
                 this.contribution = contribution;
                 this.write_off = write_off;
@@ -49,7 +39,7 @@ namespace Банк
         SqlConnection connect = new SqlConnection(Global.database);
         List<Deposit> deposit_list = new List<Deposit>();
 
-        Color[] colors = { Color.LightGreen, Color.Khaki, Color.LightBlue, Color.Plum, Color.Pink };
+        Color[] colors = { Color.LightGreen, Color.Khaki, Color.LightBlue, Color.Plum, Color.Pink, Color.PeachPuff };
         int color = 0;
 
         private void openAccount_Load(object sender, EventArgs e)
@@ -60,7 +50,7 @@ namespace Банк
                 {
                     connect.Open();
 
-                    string selectData = "select * from deposits;";
+                    string selectData = "select * from deposits, interestPaymentsDep where deposits.interest_dep = interestPaymentsDep.id_interest_dep;";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
@@ -70,14 +60,13 @@ namespace Банк
                         {
                             while (reader.Read())
                             {
-                                Deposit deposit = new (
+                                Deposit deposit = new(
                                     int.Parse(reader["id_deposit"].ToString()),
                                     reader["name_deposit_default"].ToString(),
-                                    int.Parse(reader["currency_code"].ToString()),
                                     double.Parse(reader["deposit_percentange"].ToString()),
                                     reader["contribution"].ToString(),
                                     reader["write_off"].ToString(),
-                                    reader["interest_dep"].ToString()
+                                    reader["name_interest"].ToString()
                                 );
                                 deposit_list.Add(deposit);
                             }
@@ -98,12 +87,12 @@ namespace Банк
             {
                 FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel()
                 {
-                    Name = "flowLayoutPanel" + i.ToString(),
+                    Name = $"flow{i}",
                     BackColor = colors[color],
                     AutoSize = true,
                     Margin = new Padding(0, 0, 20, 20),
-                    MaximumSize =  new Size(295, 0),
-                    MinimumSize = new Size(0 ,295),
+                    MaximumSize = new Size(295, 0),
+                    MinimumSize = new Size(295, 295),
                     Padding = new Padding(20),
                 };
 
@@ -116,15 +105,102 @@ namespace Банк
 
                 flowLayoutPanel1.Controls.Add(flowLayoutPanel);
 
-                System.Windows.Forms.Label label = new System.Windows.Forms.Label()
+                Label name = new Label()
                 {
-                    Name = "label" + i.ToString(),
-                    Font = new Font(new FontFamily("Century"), 14, FontStyle.Bold)
+                    Name = $"name{i}",
+                    Font = new Font(new FontFamily("Century"), 14, FontStyle.Bold),
+                    Text = deposit_list[i].name,
+                    AutoSize = true,
+                    Margin = new Padding(0, 0, 0, 20),
+                    MaximumSize = new Size(255, 0),
+                    MinimumSize = new Size(255, 0)
                 };
 
-                FlowLayoutPanel current_flow = Controls["flowLayoutPanel" + i];
-                current_flow.Controls.Add(label);
+                flowLayoutPanel1.Controls[$"flow{i}"].Controls.Add(name);
+
+                string description = "Выплата процентов: " + deposit_list[i].interest_dep.ToLower() + "\nВозможность пополнять: ";
+
+                if (deposit_list[i].contribution == "True")
+                {
+                    description += "есть\n";
+                }
+                else
+                {
+                    description += "нет\n";
+                }
+
+                description += "Возможность снимать: ";
+
+                if (deposit_list[i].write_off == "True")
+                {
+                    description += "есть\n";
+                }
+                else
+                {
+                    description += "нет\n";
+                }
+
+
+                Label lblDescription = new Label()
+                {
+                    Name = $"lblDescription{i}",
+                    Font = new Font(new FontFamily("Century"), 12, FontStyle.Regular),
+                    Text = description,
+                    AutoSize = true,
+                    Margin = new Padding(0, 0, 0, 40),
+                    MaximumSize = new Size(255, 0),
+                    MinimumSize = new Size(255, 0)
+                };
+
+                flowLayoutPanel1.Controls[$"flow{i}"].Controls.Add(lblDescription);
+
+                Label lblPercent = new Label()
+                {
+                    Name = $"lblPercent{i}",
+                    Font = new Font(new FontFamily("Century"), 14, FontStyle.Bold),
+                    Text = deposit_list[i].deposit_percentage.ToString() + "%",
+                    AutoSize = true,
+                    Margin = new Padding(0, 0, 0, 20),
+                    MaximumSize = new Size(255, 0),
+                    MinimumSize = new Size(255, 0)
+                };
+
+                flowLayoutPanel1.Controls[$"flow{i}"].Controls.Add(lblPercent);
+
+                Button button = new Button()
+                {
+                    Name = $"button{i}",
+                    Tag = i + 1,
+                    Font = new Font(new FontFamily("Century"), 12, FontStyle.Regular),
+                    Text = "Оформить",
+                    Margin = new Padding(0, 0, 0, 0),
+                    Size = new Size(130, 45),
+                    FlatStyle = FlatStyle.Flat,
+                    FlatAppearance = { BorderSize = 0 },
+                    BackColor = Color.WhiteSmoke,
+                };
+
+                flowLayoutPanel1.Controls[$"flow{i}"].Controls.Add(button);
+                flowLayoutPanel1.Controls[$"flow{i}"].Controls[$"button{i}"].Click += openCurrentAccount;
             }
+        }
+
+        private void openCurrentAccount(object sender, EventArgs e)
+        {
+            Global.openDeposit = int.Parse(((Button)sender).Tag.ToString());
+            LoadForm(new openCurrentAccount());
+        }
+
+        private void LoadForm(object Form)
+        {
+            if (Global.pnDeposit.Controls.Count > 0)
+                Global.pnDeposit.Controls.RemoveAt(0);
+            Form form = Form as Form;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            Global.pnDeposit.Controls.Add(form);
+            Global.pnDeposit.Tag = form;
+            form.Show();
         }
     }
 }
