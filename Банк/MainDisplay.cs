@@ -30,7 +30,6 @@ namespace Банк
             public static double openDepositSum { get; set; }
             public static int openDepositPeriod { get; set; }
             public static int accountFrom {  get; set; }
-            public static bool openDepositAccept {  get; set; }
         }
 
         public static class Number

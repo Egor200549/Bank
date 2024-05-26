@@ -40,8 +40,8 @@
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-            System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
             System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+            System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
             System.Windows.Forms.Panel panel3;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -52,11 +52,12 @@
             this.lblSum = new System.Windows.Forms.Label();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.lblPeriod = new System.Windows.Forms.Label();
-            this.lblInterest = new System.Windows.Forms.Label();
             this.lblProlongation = new System.Windows.Forms.Label();
+            this.lblInterest = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnContinue = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnContinue = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             label1 = new System.Windows.Forms.Label();
@@ -69,8 +70,8 @@
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             panel3 = new System.Windows.Forms.Panel();
             label3 = new System.Windows.Forms.Label();
             panel1.SuspendLayout();
@@ -79,8 +80,8 @@
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -158,28 +159,6 @@
             label2.TabIndex = 0;
             label2.Text = "Сумма вклада";
             // 
-            // lblSum
-            // 
-            this.lblSum.AutoSize = true;
-            this.lblSum.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSum.Location = new System.Drawing.Point(20, 53);
-            this.lblSum.Margin = new System.Windows.Forms.Padding(0);
-            this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(71, 23);
-            this.lblSum.TabIndex = 0;
-            this.lblSum.Text = "label3";
-            // 
-            // lblPercentage
-            // 
-            this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPercentage.Location = new System.Drawing.Point(20, 53);
-            this.lblPercentage.Margin = new System.Windows.Forms.Padding(0);
-            this.lblPercentage.Name = "lblPercentage";
-            this.lblPercentage.Size = new System.Drawing.Size(71, 23);
-            this.lblPercentage.TabIndex = 1;
-            this.lblPercentage.Text = "label3";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -190,17 +169,6 @@
             label4.Size = new System.Drawing.Size(79, 23);
             label4.TabIndex = 2;
             label4.Text = "Ставка";
-            // 
-            // lblPeriod
-            // 
-            this.lblPeriod.AutoSize = true;
-            this.lblPeriod.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPeriod.Location = new System.Drawing.Point(20, 53);
-            this.lblPeriod.Margin = new System.Windows.Forms.Padding(0);
-            this.lblPeriod.Name = "lblPeriod";
-            this.lblPeriod.Size = new System.Drawing.Size(71, 23);
-            this.lblPeriod.TabIndex = 3;
-            this.lblPeriod.Text = "label3";
             // 
             // label6
             // 
@@ -213,17 +181,6 @@
             label6.TabIndex = 4;
             label6.Text = "Срок";
             // 
-            // lblInterest
-            // 
-            this.lblInterest.AutoSize = true;
-            this.lblInterest.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblInterest.Location = new System.Drawing.Point(20, 53);
-            this.lblInterest.Margin = new System.Windows.Forms.Padding(0);
-            this.lblInterest.Name = "lblInterest";
-            this.lblInterest.Size = new System.Drawing.Size(71, 23);
-            this.lblInterest.TabIndex = 5;
-            this.lblInterest.Text = "label3";
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -234,17 +191,6 @@
             label8.Size = new System.Drawing.Size(354, 23);
             label8.TabIndex = 6;
             label8.Text = "Периодичность выплаты процентов";
-            // 
-            // lblProlongation
-            // 
-            this.lblProlongation.AutoSize = true;
-            this.lblProlongation.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblProlongation.Location = new System.Drawing.Point(20, 53);
-            this.lblProlongation.Margin = new System.Windows.Forms.Padding(0);
-            this.lblProlongation.Name = "lblProlongation";
-            this.lblProlongation.Size = new System.Drawing.Size(71, 23);
-            this.lblProlongation.TabIndex = 7;
-            this.lblProlongation.Text = "label3";
             // 
             // label5
             // 
@@ -286,6 +232,17 @@
             flowLayoutPanel2.Size = new System.Drawing.Size(188, 96);
             flowLayoutPanel2.TabIndex = 0;
             // 
+            // lblSum
+            // 
+            this.lblSum.AutoSize = true;
+            this.lblSum.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSum.Location = new System.Drawing.Point(20, 53);
+            this.lblSum.Margin = new System.Windows.Forms.Padding(0);
+            this.lblSum.Name = "lblSum";
+            this.lblSum.Size = new System.Drawing.Size(71, 23);
+            this.lblSum.TabIndex = 0;
+            this.lblSum.Text = "label3";
+            // 
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.AutoSize = true;
@@ -300,6 +257,17 @@
             flowLayoutPanel3.Size = new System.Drawing.Size(119, 96);
             flowLayoutPanel3.TabIndex = 1;
             // 
+            // lblPercentage
+            // 
+            this.lblPercentage.AutoSize = true;
+            this.lblPercentage.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPercentage.Location = new System.Drawing.Point(20, 53);
+            this.lblPercentage.Margin = new System.Windows.Forms.Padding(0);
+            this.lblPercentage.Name = "lblPercentage";
+            this.lblPercentage.Size = new System.Drawing.Size(71, 23);
+            this.lblPercentage.TabIndex = 1;
+            this.lblPercentage.Text = "label3";
+            // 
             // flowLayoutPanel4
             // 
             flowLayoutPanel4.AutoSize = true;
@@ -313,6 +281,42 @@
             flowLayoutPanel4.Padding = new System.Windows.Forms.Padding(20);
             flowLayoutPanel4.Size = new System.Drawing.Size(111, 96);
             flowLayoutPanel4.TabIndex = 3;
+            // 
+            // lblPeriod
+            // 
+            this.lblPeriod.AutoSize = true;
+            this.lblPeriod.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPeriod.Location = new System.Drawing.Point(20, 53);
+            this.lblPeriod.Margin = new System.Windows.Forms.Padding(0);
+            this.lblPeriod.Name = "lblPeriod";
+            this.lblPeriod.Size = new System.Drawing.Size(71, 23);
+            this.lblPeriod.TabIndex = 3;
+            this.lblPeriod.Text = "label3";
+            // 
+            // flowLayoutPanel6
+            // 
+            flowLayoutPanel6.AutoSize = true;
+            flowLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
+            flowLayoutPanel6.Controls.Add(label5);
+            flowLayoutPanel6.Controls.Add(this.lblProlongation);
+            flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel6.Location = new System.Drawing.Point(418, 0);
+            flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            flowLayoutPanel6.Padding = new System.Windows.Forms.Padding(20);
+            flowLayoutPanel6.Size = new System.Drawing.Size(156, 96);
+            flowLayoutPanel6.TabIndex = 5;
+            // 
+            // lblProlongation
+            // 
+            this.lblProlongation.AutoSize = true;
+            this.lblProlongation.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblProlongation.Location = new System.Drawing.Point(20, 53);
+            this.lblProlongation.Margin = new System.Windows.Forms.Padding(0);
+            this.lblProlongation.Name = "lblProlongation";
+            this.lblProlongation.Size = new System.Drawing.Size(71, 23);
+            this.lblProlongation.TabIndex = 7;
+            this.lblProlongation.Text = "label3";
             // 
             // flowLayoutPanel5
             // 
@@ -329,23 +333,22 @@
             flowLayoutPanel5.TabIndex = 5;
             flowLayoutPanel5.WrapContents = false;
             // 
-            // flowLayoutPanel6
+            // lblInterest
             // 
-            flowLayoutPanel6.AutoSize = true;
-            flowLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
-            flowLayoutPanel6.Controls.Add(label5);
-            flowLayoutPanel6.Controls.Add(this.lblProlongation);
-            flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel6.Location = new System.Drawing.Point(418, 0);
-            flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Padding = new System.Windows.Forms.Padding(20);
-            flowLayoutPanel6.Size = new System.Drawing.Size(156, 96);
-            flowLayoutPanel6.TabIndex = 5;
+            this.lblInterest.AutoSize = true;
+            this.lblInterest.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblInterest.Location = new System.Drawing.Point(20, 53);
+            this.lblInterest.Margin = new System.Windows.Forms.Padding(0);
+            this.lblInterest.Name = "lblInterest";
+            this.lblInterest.Size = new System.Drawing.Size(71, 23);
+            this.lblInterest.TabIndex = 5;
+            this.lblInterest.Text = "label3";
             // 
             // panel3
             // 
+            panel3.AutoScroll = true;
             panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            panel3.Controls.Add(this.panel4);
             panel3.Controls.Add(this.btnContinue);
             panel3.Controls.Add(this.label7);
             panel3.Controls.Add(this.dataGridView1);
@@ -355,6 +358,30 @@
             panel3.Name = "panel3";
             panel3.Size = new System.Drawing.Size(720, 433);
             panel3.TabIndex = 13;
+            // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(20, 384);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(680, 23);
+            this.panel4.TabIndex = 13;
+            // 
+            // btnContinue
+            // 
+            this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnContinue.BackColor = System.Drawing.Color.Silver;
+            this.btnContinue.FlatAppearance.BorderSize = 0;
+            this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContinue.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnContinue.Location = new System.Drawing.Point(20, 314);
+            this.btnContinue.Margin = new System.Windows.Forms.Padding(0);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.Size = new System.Drawing.Size(680, 52);
+            this.btnContinue.TabIndex = 12;
+            this.btnContinue.Text = "Продолжить";
+            this.btnContinue.UseVisualStyleBackColor = false;
+            this.btnContinue.Click += new System.EventHandler(this.btnTranfer_Click);
             // 
             // label7
             // 
@@ -429,23 +456,6 @@
             label3.TabIndex = 9;
             label3.Text = "Откуда списать деньги";
             // 
-            // btnContinue
-            // 
-            this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContinue.BackColor = System.Drawing.Color.Silver;
-            this.btnContinue.FlatAppearance.BorderSize = 0;
-            this.btnContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContinue.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnContinue.Location = new System.Drawing.Point(20, 314);
-            this.btnContinue.Margin = new System.Windows.Forms.Padding(0);
-            this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(680, 52);
-            this.btnContinue.TabIndex = 12;
-            this.btnContinue.Text = "Продолжить";
-            this.btnContinue.UseVisualStyleBackColor = false;
-            this.btnContinue.Click += new System.EventHandler(this.btnTranfer_Click);
-            // 
             // openingDeposit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -470,10 +480,10 @@
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -494,5 +504,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnContinue;
+        private System.Windows.Forms.Panel panel4;
     }
 }

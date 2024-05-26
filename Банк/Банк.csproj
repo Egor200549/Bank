@@ -71,6 +71,12 @@
     <Compile Include="AboutDeposit.Designer.cs">
       <DependentUpon>AboutDeposit.cs</DependentUpon>
     </Compile>
+    <Compile Include="acceptOpenDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="acceptOpenDeposit.Designer.cs">
+      <DependentUpon>acceptOpenDeposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="AccountsCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,18 @@
     <Compile Include="openCurrentAccount.Designer.cs">
       <DependentUpon>openCurrentAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="openDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="openDeposit.Designer.cs">
+      <DependentUpon>openDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="openCurrentDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="openCurrentDeposit.Designer.cs">
+      <DependentUpon>openCurrentDeposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="openingDeposit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +212,9 @@
     </Compile>
     <EmbeddedResource Include="AboutDeposit.resx">
       <DependentUpon>AboutDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="acceptOpenDeposit.resx">
+      <DependentUpon>acceptOpenDeposit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AccountsCustomer.resx">
       <DependentUpon>AccountsCustomer.cs</DependentUpon>
@@ -236,6 +257,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="openCurrentAccount.resx">
       <DependentUpon>openCurrentAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="openDeposit.resx">
+      <DependentUpon>openDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="openCurrentDeposit.resx">
+      <DependentUpon>openCurrentDeposit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="openingDeposit.resx">
       <DependentUpon>openingDeposit.cs</DependentUpon>

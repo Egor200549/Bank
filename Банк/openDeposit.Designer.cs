@@ -1,6 +1,6 @@
 ﻿namespace Банк
 {
-    partial class openAccount
+    partial class openDeposit
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
             flowLayoutPanel2.Size = new System.Drawing.Size(702, 73);
-            flowLayoutPanel2.TabIndex = 23;
+            flowLayoutPanel2.TabIndex = 22;
             // 
             // lblName
             // 
@@ -63,17 +63,20 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 73);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(20);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(702, 636);
-            this.flowLayoutPanel1.TabIndex = 24;
+            this.flowLayoutPanel1.TabIndex = 23;
             // 
             // openAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(702, 709);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(flowLayoutPanel2);
@@ -87,7 +90,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

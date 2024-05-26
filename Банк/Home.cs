@@ -88,6 +88,7 @@ namespace Банк
 
                                 lblName.Text = employee;
                             }
+                            reader.Close();
                         }
                     }
                 }

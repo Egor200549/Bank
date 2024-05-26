@@ -392,6 +392,7 @@
             this.btnOpenDeposit.Text = " Открыть вклад";
             this.btnOpenDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenDeposit.UseVisualStyleBackColor = false;
+            this.btnOpenDeposit.Click += new System.EventHandler(this.btnOpenDeposit_Click);
             // 
             // btnCloseDeposit
             // 

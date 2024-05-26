@@ -141,7 +141,7 @@ namespace Банк
 
         private void lblGoBack_Click(object sender, EventArgs e)
         {
-            LoadForm(new openCurrentAccount());
+            LoadForm(new openCurrentDeposit());
         }
 
         private void LoadForm(object Form)
@@ -194,7 +194,25 @@ namespace Банк
             }
             else
             {
+                /*Random random = new Random();
+                Global.code = random.Next(1000, 9999).ToString();*/
+                Global.code = "1";
+                Global.accountFrom = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                try
+                {
+                    /*WebClient client = new WebClient();
+                    Stream stream = client.OpenRead(string.Format("https://platform.clickatell.com/messages/http/send?apiKey=rM-C7AU_SRS-VEpht3wYKw==&to=79111355208&content={1}", Global.code));
+                    StreamReader reader = new StreamReader(stream);*/
+                    MessageBox.Show("Код подтверждения успешно отправлен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    acceptOpenDeposit acceptOpenDeposit = new acceptOpenDeposit();
+                    acceptOpenDeposit.Show();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

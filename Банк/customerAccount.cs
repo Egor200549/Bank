@@ -399,5 +399,37 @@ namespace Банк
 
             LoadForm(new openAccount());
         }
+
+        private void btnOpenDeposit_Click(object sender, EventArgs e)
+        {
+            btnPersonalData.BackColor = Color.WhiteSmoke;
+            btnPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnPersonalData.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayPersonalData.BackColor = Color.WhiteSmoke;
+            btnDisplayPersonalData.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayPersonalData.FlatAppearance.BorderColor = Color.WhiteSmoke;
+
+            btnCredit.BackColor = Color.WhiteSmoke;
+            btnCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnCredit.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayCredit.BackColor = Color.WhiteSmoke;
+            btnDisplayCredit.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayCredit.FlatAppearance.BorderColor = Color.Silver;
+
+            btnDeposit.BackColor = Color.FromArgb(23, 24, 29);
+            btnDeposit.ForeColor = Color.WhiteSmoke;
+            btnDeposit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+            btnDisplayDeposit.BackColor = Color.FromArgb(23, 24, 29);
+            btnDisplayDeposit.ForeColor = Color.WhiteSmoke;
+            btnDisplayDeposit.FlatAppearance.BorderColor = Color.FromArgb(23, 24, 29);
+
+            btnAccounts.BackColor = Color.WhiteSmoke;
+            btnAccounts.ForeColor = Color.FromArgb(23, 24, 29);
+            btnAccounts.FlatAppearance.BorderColor = Color.Silver;
+            btnDisplayAccount.BackColor = Color.WhiteSmoke;
+            btnDisplayAccount.ForeColor = Color.FromArgb(23, 24, 29);
+            btnDisplayAccount.FlatAppearance.BorderColor = Color.Silver;
+            LoadForm(new openDeposit());
+        }
     }
 }
