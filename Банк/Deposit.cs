@@ -222,5 +222,10 @@ namespace Банк
             Global.pnDeposit.Tag = form;
             form.Show();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Function(new topUpAccount());
+        }
     }
 }

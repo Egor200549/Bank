@@ -174,20 +174,9 @@ namespace Банк
 
         private void OpenAccount_Click(object sender, EventArgs e)
         {
-            Global.openDeposit = int.Parse(((Button)sender).Tag.ToString());
-            LoadForm(new openCurrentDeposit());
-        }
-
-        private void LoadForm(object Form)
-        {
-            if (Global.pnDeposit.Controls.Count > 0)
-                Global.pnDeposit.Controls.RemoveAt(0);
-            Form form = Form as Form;
-            form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
-            Global.pnDeposit.Controls.Add(form);
-            Global.pnDeposit.Tag = form;
-            form.Show();
+            Global.openAccount = int.Parse(((Button)sender).Tag.ToString());
+            acceptOpenAccount acceptOpenAccount = new acceptOpenAccount();
+            acceptOpenAccount.Show();
         }
     }
 }

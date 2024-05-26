@@ -30,6 +30,10 @@ namespace Банк
             public static double openDepositSum { get; set; }
             public static int openDepositPeriod { get; set; }
             public static int accountFrom {  get; set; }
+
+            //открытие счёта
+
+            public static int openAccount { get; set; }
         }
 
         public static class Number
@@ -45,9 +49,9 @@ namespace Банк
 
         private void MainDisplay_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
             LoadForm(new Home());
             Global.pn = pnMain;
-            MainDisplay mainDisplay = new MainDisplay();
         }
 
         private void MainDisplay_FormClosed(object sender, FormClosedEventArgs e)

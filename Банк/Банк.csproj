@@ -71,6 +71,12 @@
     <Compile Include="AboutDeposit.Designer.cs">
       <DependentUpon>AboutDeposit.cs</DependentUpon>
     </Compile>
+    <Compile Include="acceptOpenAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="acceptOpenAccount.Designer.cs">
+      <DependentUpon>acceptOpenAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="acceptOpenDeposit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,12 @@
     <Compile Include="rateCalculation.Designer.cs">
       <DependentUpon>rateCalculation.cs</DependentUpon>
     </Compile>
+    <Compile Include="topUpAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="topUpAccount.Designer.cs">
+      <DependentUpon>topUpAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransferToAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +224,9 @@
     </Compile>
     <EmbeddedResource Include="AboutDeposit.resx">
       <DependentUpon>AboutDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="acceptOpenAccount.resx">
+      <DependentUpon>acceptOpenAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="acceptOpenDeposit.resx">
       <DependentUpon>acceptOpenDeposit.cs</DependentUpon>
@@ -279,6 +294,9 @@
     </Compile>
     <EmbeddedResource Include="rateCalculation.resx">
       <DependentUpon>rateCalculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="topUpAccount.resx">
+      <DependentUpon>topUpAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TransferToAccount.resx">
       <DependentUpon>TransferToAccount.cs</DependentUpon>
