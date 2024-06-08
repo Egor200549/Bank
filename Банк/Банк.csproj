@@ -50,6 +50,13 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NLipsum.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=593e1df460e1bda0, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLipsum.1.1.0\lib\net20\NLipsum.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -326,6 +333,7 @@
     <None Include="bankDataSet1.xss">
       <DependentUpon>bankDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -335,6 +343,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\rekvizity.doc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

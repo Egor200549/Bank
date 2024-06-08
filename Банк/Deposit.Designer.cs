@@ -54,6 +54,10 @@
             this.настройкиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.документыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.выпискаПоВкадуИСчётуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.доходыПереданныеВФНСToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаОДоступномОстаткеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.реквизитыСчётаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnTransfer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -381,9 +385,39 @@
             // 
             this.документыToolStripMenuItem1.AutoSize = false;
             this.документыToolStripMenuItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.документыToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.выпискаПоВкадуИСчётуToolStripMenuItem,
+            this.доходыПереданныеВФНСToolStripMenuItem,
+            this.справкаОДоступномОстаткеToolStripMenuItem,
+            this.реквизитыСчётаToolStripMenuItem});
             this.документыToolStripMenuItem1.Name = "документыToolStripMenuItem1";
             this.документыToolStripMenuItem1.Size = new System.Drawing.Size(142, 43);
             this.документыToolStripMenuItem1.Text = "Документы";
+            // 
+            // выпискаПоВкадуИСчётуToolStripMenuItem
+            // 
+            this.выпискаПоВкадуИСчётуToolStripMenuItem.Name = "выпискаПоВкадуИСчётуToolStripMenuItem";
+            this.выпискаПоВкадуИСчётуToolStripMenuItem.Size = new System.Drawing.Size(376, 28);
+            this.выпискаПоВкадуИСчётуToolStripMenuItem.Text = "Выписка по вкаду и счёту";
+            // 
+            // доходыПереданныеВФНСToolStripMenuItem
+            // 
+            this.доходыПереданныеВФНСToolStripMenuItem.Name = "доходыПереданныеВФНСToolStripMenuItem";
+            this.доходыПереданныеВФНСToolStripMenuItem.Size = new System.Drawing.Size(376, 28);
+            this.доходыПереданныеВФНСToolStripMenuItem.Text = "Доходы переданные в ФНС";
+            // 
+            // справкаОДоступномОстаткеToolStripMenuItem
+            // 
+            this.справкаОДоступномОстаткеToolStripMenuItem.Name = "справкаОДоступномОстаткеToolStripMenuItem";
+            this.справкаОДоступномОстаткеToolStripMenuItem.Size = new System.Drawing.Size(376, 28);
+            this.справкаОДоступномОстаткеToolStripMenuItem.Text = "Справка о доступном остатке";
+            // 
+            // реквизитыСчётаToolStripMenuItem
+            // 
+            this.реквизитыСчётаToolStripMenuItem.Name = "реквизитыСчётаToolStripMenuItem";
+            this.реквизитыСчётаToolStripMenuItem.Size = new System.Drawing.Size(376, 28);
+            this.реквизитыСчётаToolStripMenuItem.Text = "Реквизиты счёта";
+            this.реквизитыСчётаToolStripMenuItem.Click += new System.EventHandler(this.реквизитыСчётаToolStripMenuItem_Click);
             // 
             // flowLayoutPanel6
             // 
@@ -701,5 +735,9 @@
         private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem1;
         private System.Windows.Forms.Panel pnAboutDeposit;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem выпискаПоВкадуИСчётуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem доходыПереданныеВФНСToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаОДоступномОстаткеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem реквизитыСчётаToolStripMenuItem;
     }
 }

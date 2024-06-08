@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLipsum.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,11 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 using static Банк.MainDisplay;
+using System.Xml.Linq;
+using Банк.Properties;
+using Microsoft.Office.Interop.Word;
 
 namespace Банк
 {
@@ -23,7 +28,7 @@ namespace Банк
             InitializeComponent();
         }
 
-        SqlConnection connect = new SqlConnection(Global.database);
+        SqlConnection connect = new SqlConnection(MainDisplay.Global.database);
 
         private void Deposit_Load(object sender, EventArgs e)
         {
@@ -37,7 +42,7 @@ namespace Банк
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@id_dep", Global.deposit);
+                        cmd.Parameters.AddWithValue("@id_dep", MainDisplay.Global.deposit);
 
                         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -213,19 +218,52 @@ namespace Банк
 
         private void Function(object Form)
         {
-            if (Global.pnDeposit.Controls.Count > 0)
-                Global.pnDeposit.Controls.RemoveAt(0);
+            if (MainDisplay.Global.pnDeposit.Controls.Count > 0)
+                MainDisplay.Global.pnDeposit.Controls.RemoveAt(0);
             Form form = Form as Form;
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;
-            Global.pnDeposit.Controls.Add(form);
-            Global.pnDeposit.Tag = form;
+            MainDisplay.Global.pnDeposit.Controls.Add(form);
+            MainDisplay.Global.pnDeposit.Tag = form;
             form.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             Function(new topUpAccount());
+        }
+
+        
+
+        private void реквизитыСчётаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Word.Application wordApp = new Word.Application();
+            Word.Document wordDoc = wordApp.Documents.Add();
+            byte[] fileBytes = Resources
+            
+            
+            
+            /*var wordApp = new Word.Application();
+
+            try
+            {
+                var wordDocument = wordApp.Documents.Open("C:\\Users\\egork\\Desktop\\Колледж\\3 курс\\Разрабока кода ИС\\БАНК\\Банк\\Банк\\Resources\\document1.doc");
+                ReplaceStub("{name}", name, wordDocument);
+                //wordDocument.SaveAs(@"C:\Users\Zahar\Desktop\Тест на отчет\Тест\resultat.docx");
+                wordApp.Visible = true;
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка");
+            }
+
+            void ReplaceStub(string stubToReplace, string text, word.Document worldDocument)
+            {
+                var range = worldDocument.Content;
+                range.Find.ClearFormatting();
+                object wdReplaceAll = word.WdReplace.wdReplaceAll;
+                range.Find.Execute(FindText: stubToReplace, ReplaceWith: text, Replace: wdReplaceAll);
+            }*/
         }
     }
 }
